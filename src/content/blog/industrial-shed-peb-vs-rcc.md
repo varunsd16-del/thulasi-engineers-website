@@ -46,4 +46,4 @@ RCC is still the preferred choice for:
 | Foundation Cost | Lower | Higher |
 | Fire Resistance | Moderate (Requires Coating) | High |
 
-**Looking to build a factory in Trichy?** [Consult our Industrial Engineers](https://thulasiengineers.com/contact).
+**Looking to build a factory in Trichy?** [Consult our Industrial Engineers](https://thulasiengineer.in/contact).

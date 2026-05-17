@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://thulasiengineers.com',
+  site: 'https://thulasiengineer.in',
   integrations: [tailwind()],
   build: {
     assets: '_assets'

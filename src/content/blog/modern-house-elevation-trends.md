@@ -37,4 +37,4 @@ We provide high-resolution 3D walkthroughs for every project. This allows you to
 
 > "A house is a machine for living in, but it must also be a piece of art."
 
-**Want a unique design for your home?** [Visit our Architecture Studio](https://thulasiengineers.com/services/architecture-planning).
+**Want a unique design for your home?** [Visit our Architecture Studio](https://thulasiengineer.in/services/architecture-planning).

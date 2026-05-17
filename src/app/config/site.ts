@@ -3,7 +3,7 @@ export const SITE_METADATA = {
   shortName: "Thulasi Engineers",
   tagline: "Building Excellence with Integrity",
   description: "Premium builders in Trichy specializing in residential, commercial, and industrial construction with DTCP approvals.",
-  url: "https://thulasiengineers.com",
+  url: "https://thulasiengineer.in",
   email: "thulasiengineers@gmail.com",
   phone: "+91 70101 11978",
   whatsapp: "+917010111978",

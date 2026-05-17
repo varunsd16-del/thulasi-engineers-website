@@ -1,7 +1,7 @@
 import { getCollection } from 'astro:content';
 import { categories } from '../app/constants/blog.ts';
 
-const site = 'https://thulasiengineers.com';
+const site = 'https://thulasiengineer.in';
 
 const staticPages = [
   '',
