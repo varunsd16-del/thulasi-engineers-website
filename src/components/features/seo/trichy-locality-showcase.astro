@@ -1,0 +1,280 @@
+---
+// AreasServed.astro - Local SEO targeted section
+const areas = [
+  "Srirangam", "Thillai Nagar", "KK Nagar Trichy", "Woraiyur", 
+  "Cantonment", "Karumandapam", "Puthur", "Tiruverumbur", 
+  "Samayapuram", "Golden Rock", "Manapparai", "Lalgudi", 
+  "Musiri", "Thuvakudi", "BHEL Township"
+];
+---
+
+<section class="areas-served">
+  <div class="container">
+    <div class="areas-served__inner">
+      <div class="areas-served__content reveal-up">
+        <div class="section-badge">LOCATIONS WE COVER</div>
+        <h2 class="section-title">Construction Services Across <span class="text-gold">Trichy</span></h2>
+        <p class="section-desc">
+          Thulasi Engineers & Contractors provides premium construction and civil engineering services throughout Tiruchirappalli and surrounding regions. We are the preferred choice for residents and businesses in these major localities.
+        </p>
+        
+        <div class="areas-grid">
+          {areas.map(area => (
+            <div class="area-tag">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                <circle cx="12" cy="10" r="3"/>
+              </svg>
+              {area}
+            </div>
+          ))}
+        </div>
+
+        <div class="areas-cta">
+          <p>Don't see your location? <a href="/contact">Contact us</a> to check if we serve your area.</p>
+        </div>
+      </div>
+
+      <div class="areas-served__map reveal-up" style="transition-delay: 0.2s;">
+        <div class="map-placeholder">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125406.1070220641!2d78.61898555353153!3d10.8143920743516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf50ff204d6dd%3A0x63c45b34a2e21245!2sTiruchirappalli%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1715248000000!5m2!1sen!2sin" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+    --text-muted: #4b5563;
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --border-light: rgba(13, 27, 62, 0.08);
+  }
+
+  .areas-served {
+    padding: 100px 0;
+    background: var(--bg-light);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .areas-served__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  /* Section Badge */
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  /* Areas Grid */
+  .areas-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+
+  .area-tag {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--navy);
+    padding: 12px 16px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .area-tag svg { 
+    color: var(--gold);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .area-tag:hover {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    transform: translateX(5px);
+  }
+
+  .area-tag:hover svg { 
+    color: var(--navy); 
+  }
+
+  /* CTA */
+  .areas-cta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    padding-top: 10px;
+  }
+
+  .areas-cta a {
+    color: var(--gold);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .areas-cta a:hover {
+    color: var(--gold-light);
+    border-bottom-color: var(--gold);
+  }
+
+  /* Map */
+  .areas-served__map {
+    height: 450px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--border-light);
+  }
+
+  .map-placeholder {
+    width: 100%;
+    height: 100%;
+    background: var(--bg-light);
+  }
+
+  .map-placeholder iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 40px;
+    }
+
+    .areas-served__inner { 
+      grid-template-columns: 1fr; 
+    }
+
+    .areas-served__map {
+      height: 400px;
+      order: -1;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .areas-served {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+    }
+
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .area-tag {
+      font-size: 0.8rem;
+      padding: 10px 12px;
+    }
+
+    .areas-served__map {
+      height: 350px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .areas-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .area-tag {
+      font-size: 0.7rem;
+      padding: 8px 10px;
+      gap: 6px;
+    }
+
+    .area-tag svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+  }
+</style>

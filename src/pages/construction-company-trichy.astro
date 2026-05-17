@@ -1,0 +1,298 @@
+---
+import BaseLayout from '../layouts/engineering-authority-layout.astro';
+import ContactMini from '../components/features/contact/ContactMini.astro';
+import FAQ from '../components/features/seo/FAQ.astro';
+import AreasServed from '../components/features/seo/trichy-locality-showcase.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+
+const title = `Best Construction Company in Trichy | ${SITE_METADATA.name}`;
+const description = SITE_METADATA.description;
+const keywords = "construction company in trichy, best builders in trichy, building contractors in trichy, house construction trichy, civil engineers trichy";
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/ongoing-residential-villa-construction-trichy.webp" alt="Construction Company in Trichy" class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="section-badge">TOP RATED FIRM</div>
+      <h1 class="page-banner__title">Best <span class="text-gold">Construction</span> Company in Trichy</h1>
+      <p class="page-banner__subtitle">Top-Rated Building Contractors & Civil Engineers in Trichy.</p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Construction Company Trichy</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="service-detail">
+    <div class="container">
+      <div class="service-detail__grid">
+        <div class="service-detail__main">
+          <h2>Top-Rated Building Contractors & Civil Engineers in Trichy</h2>
+          <p>
+            Welcome to <strong>Thulasi Engineers & Contractors</strong>, your trusted partner for all construction needs in Tiruchirappalli. As the <strong>best construction company in Trichy</strong>, we take pride in delivering architectural excellence and structural integrity in every project we undertake.
+          </p>
+          
+          <p>
+            With over a decade of experience in the Tamil Nadu construction industry, our team of dedicated <strong>civil engineers in Trichy</strong> has successfully completed numerous residential villas, commercial complexes, and industrial facilities. We are committed to providing <strong>turnkey construction solutions</strong> that are transparent, budget-friendly, and delivered on time.
+          </p>
+
+          <img src="/images/localities/structural-concrete-framing-work-trichy.webp" alt="Residential Construction Project in Trichy" class="img-fluid rounded my-4" />
+
+          <h3>Why We Are the Best Builders in Trichy</h3>
+          <p>
+            Finding the right <strong>builders in Trichy</strong> can be challenging. At Thulasi Engineers, we simplify the process by handling everything from <strong>house plan approvals</strong> to final interior finishing. Our reputation as premium <strong>building contractors in Trichy</strong> is built on three pillars:
+          </p>
+          
+          <ul>
+            <li><strong>Uncompromising Quality:</strong> We use only the highest grade materials (ISI certified) to ensure the longevity of your structure.</li>
+            <li><strong>Expert Engineering:</strong> Our site engineers monitor every stage of construction to prevent errors and ensure safety.</li>
+            <li><strong>On-Time Handover:</strong> We value your time. Our project management team ensures milestones are met without delays.</li>
+          </ul>
+
+          <h3>Our Construction Services in Tiruchirappalli</h3>
+          <p>
+            As a full-service <strong>civil contractor in Trichy</strong>, we offer a wide range of services tailored to meet diverse needs:
+          </p>
+
+          <div class="service-sub-grid">
+            <div class="sub-card">
+              <h4>Residential Construction</h4>
+              <p>Specializing in <strong>villa construction in Trichy</strong> and luxury home building with modern amenities.</p>
+            </div>
+            <div class="sub-card">
+              <h4>Commercial Projects</h4>
+              <p>Leading <strong>commercial construction contractors in Trichy</strong> for office hubs and retail outlets.</p>
+            </div>
+            <div class="sub-card">
+              <h4>Industrial Construction</h4>
+              <p>Expertise in <strong>warehouse construction in Trichy</strong> and industrial shed fabrication in Tiruverumbur.</p>
+            </div>
+            <div class="sub-card">
+              <h4>Home Renovation</h4>
+              <p>The most reliable <strong>renovation contractors in Trichy</strong> for house remodeling and interior upgrades.</p>
+            </div>
+          </div>
+
+          <h3>Low Budget House Construction in Trichy</h3>
+          <p>
+            We believe everyone deserves a beautiful home. Our engineers specialize in <strong>low budget house construction in Trichy</strong> without compromising on safety or structural strength. We optimize designs to reduce material waste and use cost-effective yet durable building techniques.
+          </p>
+
+          <div class="cta-inner">
+            <h4>Start Your Dream Home Project Today!</h4>
+            <p>Consult with our expert engineers for a free site visit and estimation in Trichy.</p>
+            <a href="/contact" class="btn btn--red">GET FREE QUOTE</a>
+          </div>
+        </div>
+
+        <aside class="service-detail__sidebar">
+          <div class="sidebar-box">
+            <h4>Quick Links</h4>
+            <ul class="sidebar-links">
+              <li><a href="/best-builders-in-trichy">Best Builders in Trichy</a></li>
+              <li><a href="/civil-engineers-in-trichy">Civil Engineers in Trichy</a></li>
+              <li><a href="/residential-construction-trichy">Residential Construction</a></li>
+              <li><a href="/commercial-construction-trichy">Commercial Construction</a></li>
+              <li><a href="/home-renovation-trichy">Home Renovation Trichy</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-box contact-box">
+            <h4>Ready to Build?</h4>
+            <p>Get professional advice from Trichy's top civil contractors.</p>
+            <a href={`tel:${SITE_METADATA.whatsapp.replace('+', '')}`} class="sidebar-btn">{SITE_METADATA.phone}</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <AreasServed />
+  <FAQ />
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .page-banner__title span {
+    color: var(--gold);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--gold);
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .service-detail { padding: 100px 0; }
+  .service-detail__grid { display: grid; grid-template-columns: 8fr 4fr; gap: 60px; }
+  
+  .service-detail__main h2 { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; color: var(--black); }
+  .service-detail__main h3 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin-top: 40px; margin-bottom: 20px; color: var(--black); }
+  .service-detail__main p { font-size: 1.1rem; line-height: 1.8; color: var(--text-body); margin-bottom: 20px; }
+  .service-detail__main ul { margin-bottom: 30px; padding-left: 20px; }
+  .service-detail__main li { margin-bottom: 12px; font-size: 1.05rem; color: var(--text-body); position: relative; list-style: none; padding-left: 25px; }
+  .service-detail__main li::before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 900; }
+
+  .service-sub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 40px 0; }
+  .sub-card { background: #f8f9fa; padding: 30px; border-radius: 15px; border-left: 4px solid var(--red); }
+  .sub-card h4 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+  .sub-card p { font-size: 0.95rem; margin-bottom: 0; }
+
+  .cta-inner { background: var(--black); color: #fff; padding: 50px; border-radius: 20px; text-align: center; margin-top: 60px; }
+  .cta-inner h4 { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px; }
+  .cta-inner p { opacity: 0.8; margin-bottom: 30px; }
+
+  /* Sidebar */
+  .sidebar-box { background: #fff; padding: 35px; border-radius: 20px; border: 1px solid var(--gray-border); margin-bottom: 30px; box-shadow: var(--shadow-sm); }
+  .sidebar-box h4 { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 2px solid var(--red); }
+  .sidebar-links { list-style: none; padding: 0; }
+  .sidebar-links li { margin-bottom: 15px; }
+  .sidebar-links a { color: var(--text-body); font-weight: 600; transition: color 0.2s; }
+  .sidebar-links a:hover { color: var(--red); }
+
+  .contact-box { background: var(--red); color: #fff; border: none; text-align: center; }
+  .contact-box h4 { border-bottom-color: rgba(255,255,255,0.3); color: #fff; }
+  .contact-box p { font-size: 0.95rem; margin-bottom: 25px; }
+  .sidebar-btn { display: block; background: #fff; color: var(--red); padding: 15px; border-radius: 10px; font-weight: 800; text-decoration: none; }
+
+  @media (max-width: 1024px) {
+    .service-detail__grid { grid-template-columns: 1fr; }
+    .service-sub-grid { grid-template-columns: 1fr; }
+    .page-banner { 
+      min-height: 40vh; 
+      padding-top: 120px; 
+      padding-bottom: 80px; 
+    }
+  }
+</style>

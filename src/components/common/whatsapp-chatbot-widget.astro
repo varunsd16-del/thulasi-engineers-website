@@ -1,0 +1,491 @@
+---
+// Chatbot.astro - Premium AI-Powered Assistant for Thulasi Engineers
+import { SITE_METADATA } from '../../app/config/site.ts';
+---
+
+<div class="chatbot-widget" id="chatbot-widget">
+  <!-- Chatbot Toggle Button -->
+  <button class="chatbot-toggle" id="chatbot-toggle" aria-label="Open Assistant">
+    <div class="chatbot-toggle__icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </div>
+    <div class="chatbot-toggle__pulse"></div>
+  </button>
+
+  <!-- Chat Window -->
+  <div class="chat-window" id="chat-window">
+    <!-- Header -->
+    <div class="chat-header">
+      <div class="chat-header__info">
+        <div class="chat-header__avatar">
+          <div class="avatar-ring"></div>
+          <img src="/favicon.svg" alt="Thulasi Assistant" />
+          <div class="online-indicator"></div>
+        </div>
+        <div class="chat-header__text">
+          <h4>Thulasi Assistant</h4>
+          <p>Online • AI Powered</p>
+        </div>
+      </div>
+      <button class="chat-close" id="chat-close" aria-label="Close Chat">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <!-- Message Body -->
+    <div class="chat-body" id="chat-body">
+      <div class="message bot reveal-msg">
+        <div class="message__content">
+          Hello! 👋 Welcome to <strong>Thulasi Engineers & Contractors</strong>. I'm your virtual assistant. How can I help you today?
+        </div>
+        <div class="message__time">Just now</div>
+      </div>
+      
+      <div class="chat-options">
+        <button class="option-btn" data-query="services">🏗️ Our Services</button>
+        <button class="option-btn" data-query="process">📐 Building Process</button>
+        <button class="option-btn" data-query="contact">📞 Speak with Engineer</button>
+      </div>
+    </div>
+
+    <!-- Footer Input -->
+    <div class="chat-footer">
+      <input type="text" id="chat-input" placeholder="Type your inquiry here..." autocomplete="off" />
+      <button id="chat-send" aria-label="Send Message">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .chatbot-widget {
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+    z-index: 10000;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* --- Toggle Button --- */
+  .chatbot-toggle {
+    width: 55px;
+    height: 55px;
+    background: #c5a059;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.3);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    padding: 0;
+  }
+
+  .chatbot-toggle:hover {
+    transform: scale(1.1) rotate(8deg);
+    box-shadow: 0 15px 40px rgba(197, 160, 89, 0.5);
+  }
+
+  .chatbot-toggle__icon svg {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  }
+
+  .chatbot-toggle__pulse {
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid #c5a059;
+    opacity: 0;
+    animation: pulse-ring 2.5s infinite;
+  }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.8); opacity: 0.8; }
+    100% { transform: scale(1.4); opacity: 0; }
+  }
+
+  /* --- Chat Window --- */
+  .chat-window {
+    position: absolute;
+    bottom: 85px;
+    right: 0;
+    width: 380px;
+    height: 580px;
+    max-height: calc(90vh - 120px);
+    background: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(30px) scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: bottom right;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .chat-window.active {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Header */
+  .chat-header {
+    background: #0d1b3e;
+    color: #fff;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chat-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .chat-header__info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .chat-header__avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 6px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .chat-header__avatar img { width: 100%; height: 100%; object-fit: contain; }
+
+  .online-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 10px;
+    height: 10px;
+    background: #22c55e;
+    border: 2px solid #0d1b3e;
+    border-radius: 50%;
+  }
+
+  .chat-header__text h4 { 
+    font-size: 0.95rem; 
+    margin: 0; 
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  .chat-header__text p { 
+    font-size: 0.7rem; 
+    color: rgba(255, 255, 255, 0.6); 
+    margin: 2px 0 0; 
+    font-weight: 500;
+  }
+
+  .chat-close {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 2;
+  }
+
+  .chat-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+  }
+
+  /* Body */
+  /* Body */
+  .chat-body {
+    flex: 1;
+    padding: 24px;
+    overflow-y: auto;
+    background: #efeae2;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom Scrollbar */
+  .chat-body::-webkit-scrollbar { width: 4px; }
+  .chat-body::-webkit-scrollbar-track { background: transparent; }
+  .chat-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.05); border-radius: 10px; }
+
+  .message {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .message.bot { 
+    align-self: flex-start; 
+    text-align: left;
+  }
+  .message.user { 
+    align-self: flex-end; 
+    text-align: left;
+  }
+
+  .message__content {
+    padding: 8px 12px 6px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  .bot .message__content {
+    background: #ffffff;
+    color: #111b21;
+    border-top-left-radius: 0px;
+  }
+
+  .user .message__content {
+    background: #d9fdd3;
+    color: #111b21;
+    border-top-right-radius: 0px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  }
+
+  .message__time {
+    font-size: 0.65rem;
+    color: #667781;
+    margin-top: 2px;
+    display: block;
+  }
+
+  .user .message__time {
+    text-align: right;
+  }
+
+  /* Interactive Options */
+  .chat-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    animation: fadeIn 0.8s ease forwards;
+  }
+
+  .option-btn {
+    background: #fff;
+    border: 1px solid rgba(13, 27, 62, 0.08);
+    padding: 10px 16px;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    color: #0d1b3e;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+  }
+
+  .option-btn:hover {
+    border-color: #c5a059;
+    color: #c5a059;
+    background: rgba(197, 160, 89, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(197, 160, 89, 0.12);
+  }
+
+  /* Footer */
+  .chat-footer {
+    padding: 12px 16px;
+    background: #f0f2f5;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  #chat-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 0.95rem;
+    padding: 10px 14px;
+    background: #ffffff;
+    border-radius: 8px;
+    font-family: inherit;
+    color: #111b21;
+  }
+
+  #chat-input::placeholder { color: #8696a0; }
+
+  #chat-send {
+    background: #00a884;
+    border: none;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+
+  #chat-send:hover {
+    background: #008f72;
+    transform: scale(1.05);
+  }
+
+  #chat-send svg { width: 18px; height: 18px; }
+
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal-msg {
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  /* Mobile & Tablet support */
+  @media (max-width: 768px) {
+    .chatbot-widget {
+      bottom: 144px;
+      right: 20px;
+    }
+    .chatbot-toggle {
+      width: 50px;
+      height: 50px;
+      box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3);
+    }
+    .chatbot-toggle__icon svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .chat-window {
+      width: calc(100vw - 40px);
+      right: 0;
+      height: 65vh;
+      bottom: 75px;
+    }
+  }
+</style>
+
+<script>
+  import { SITE_METADATA } from '../../app/config/site.ts';
+
+  const toggleBtn = document.getElementById('chatbot-toggle');
+  const closeBtn = document.getElementById('chat-close');
+  const chatWindow = document.getElementById('chat-window');
+  const chatInput = document.getElementById('chat-input') as HTMLInputElement;
+  const chatSend = document.getElementById('chat-send');
+  const chatBody = document.getElementById('chat-body');
+
+  // Pre-defined Knowledge Base
+  const responses = {
+    "construction cost": `The current construction cost in Trichy for 2024-25 ranges from <strong>₹1,850 to ₹2,450 per sq.ft</strong> depending on specifications. Would you like a detailed quote for your plot?`,
+    "services": `We provide: <br/>• Residential Villa Construction<br/>• Commercial Office Hubs<br/>• Industrial Sheds<br/>• PMC Consultancy<br/>• DTCP Plan Approvals`,
+    "process": `Our 5-step process: <br/>1. Consultation<br/>2. Architectural Planning<br/>3. Approval Handling<br/>4. Precision Execution<br/>5. Final Handover.`,
+    "contact": `You can speak directly with our Lead Engineer at <strong>${SITE_METADATA.phone}</strong> or visit our office at Sri Lakshmi Complex, Trichy.`,
+    "default": `That's a great question! One of our expert civil engineers will be better equipped to answer that. Shall I have them call you back?`
+  };
+
+  const toggleChat = () => chatWindow?.classList.toggle('active');
+  const closeChat = () => chatWindow?.classList.remove('active');
+
+  toggleBtn?.addEventListener('click', toggleChat);
+  closeBtn?.addEventListener('click', closeChat);
+
+  const appendMessage = (text: string, type: 'user' | 'bot') => {
+    const msgDiv = document.createElement('div');
+    msgDiv.className = `message ${type} reveal-msg`;
+    msgDiv.innerHTML = `
+      <div class="message__content">${text}</div>
+      <div class="message__time">${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</div>
+    `;
+    chatBody?.appendChild(msgDiv);
+    chatBody?.scrollTo({ top: chatBody.scrollHeight, behavior: 'smooth' });
+  };
+
+  const handleBotResponse = (query: string) => {
+    // Show typing indicator (simulated)
+    const typing = document.createElement('div');
+    typing.className = 'message bot typing';
+    typing.innerHTML = '<div class="message__content">...</div>';
+    chatBody?.appendChild(typing);
+    chatBody?.scrollTo(0, chatBody.scrollHeight);
+
+    setTimeout(() => {
+      typing.remove();
+      const lowerQuery = query.toLowerCase();
+      let response = responses.default;
+
+      if (lowerQuery.includes('cost') || lowerQuery.includes('price')) response = responses["construction cost"];
+      else if (lowerQuery.includes('service') || lowerQuery.includes('offer')) response = responses.services;
+      else if (lowerQuery.includes('process') || lowerQuery.includes('how')) response = responses.process;
+      else if (lowerQuery.includes('contact') || lowerQuery.includes('call') || lowerQuery.includes('phone')) response = responses.contact;
+      
+      appendMessage(response, 'bot');
+    }, 1000);
+  };
+
+  const handleSend = () => {
+    const text = chatInput?.value.trim();
+    if (text) {
+      appendMessage(text, 'user');
+      chatInput.value = '';
+      handleBotResponse(text);
+    }
+  };
+
+  chatSend?.addEventListener('click', handleSend);
+  chatInput?.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSend();
+  });
+
+  // Handle Quick Options
+  chatBody?.addEventListener('click', (e) => {
+    const target = e.target as HTMLElement;
+    if (target.classList.contains('option-btn')) {
+      const query = target.getAttribute('data-query');
+      if (query) {
+        appendMessage(target.textContent || '', 'user');
+        handleBotResponse(query);
+      }
+    }
+  });
+</script>

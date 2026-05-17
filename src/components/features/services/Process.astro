@@ -1,0 +1,325 @@
+---
+// Process.astro - Step by step construction process
+const steps = [
+  {
+    num: "01",
+    title: "Planning & Design",
+    desc: "We start with detailed architectural planning and structural design to ensure your vision is captured perfectly while adhering to Trichy's building regulations."
+  },
+  {
+    num: "02",
+    title: "Estimation & Approval",
+    desc: "Our civil engineers provide transparent cost estimations and help you navigate the house plan approval process in Tiruchirappalli."
+  },
+  {
+    num: "03",
+    title: "Foundation & Structure",
+    desc: "Quality construction begins with a solid foundation. We use premium materials and expert site engineers to build robust structural frames."
+  },
+  {
+    num: "04",
+    title: "Finishing & Interiors",
+    desc: "From modular kitchens to premium interior design, we handle all finishing works with meticulous attention to detail and craftsmanship."
+  },
+  {
+    num: "05",
+    title: "Quality Check & Handover",
+    desc: "Rigorous quality inspections are performed at every stage before we handover your dream project on-time and within budget."
+  }
+];
+---
+
+<section class="process-section">
+  <div class="container">
+    <div class="section-header reveal-up">
+      <div class="section-badge">OUR WORKING PROCESS</div>
+      <h2 class="section-title">How We Build Your <span class="text-gold">Dreams</span></h2>
+      <div class="heading-accent-line"></div>
+      <p class="section-desc">Experience a transparent and professional construction journey with Trichy's most trusted building contractors.</p>
+    </div>
+
+    <div class="process-grid">
+      {steps.map((step, index) => (
+        <div class="process-card reveal-up" style={`transition-delay: ${index * 0.1}s`}>
+          <div class="step-number">{step.num}</div>
+          <div class="step-connector"></div>
+          <h3 class="step-title">{step.title}</h3>
+          <p class="step-description">{step.desc}</p>
+          <div class="step-hover-line"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+  }
+
+  .process-section {
+    padding: 70px 0;
+    background: #0d1b3e;
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(197, 160, 89, 0.15);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  /* Section Header */
+  .section-header {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #c5a059;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .text-gold {
+    color: #c5a059;
+  }
+
+  .heading-accent-line {
+    width: 60px;
+    height: 2px;
+    background: #c5a059;
+    margin: 20px 0 25px 0;
+  }
+
+
+
+  .section-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    max-width: 650px;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* Process Grid - 5 Columns Side by Side */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    position: relative;
+  }
+
+  /* Process Card */
+  .process-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 16px;
+    padding: 35px 25px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .process-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(197, 160, 89, 0.5);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Step Number */
+  .step-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(197, 160, 89, 0.3);
+    margin-bottom: 15px;
+    line-height: 1;
+    transition: all 0.3s ease;
+  }
+
+  .process-card:hover .step-number {
+    color: rgba(197, 160, 89, 0.6);
+    transform: scale(1.05);
+  }
+
+  /* Step Connector Line (for visual flow) */
+  .step-connector {
+    width: 40px;
+    height: 2px;
+    background: #c5a059;
+    margin: 0 auto 20px auto;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+  }
+
+  .process-card:hover .step-connector {
+    width: 60px;
+    opacity: 1;
+  }
+
+  /* Step Title */
+  .step-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 15px;
+    line-height: 1.3;
+  }
+
+  /* Step Description */
+  .step-description {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Hover Bottom Line Animation */
+  .step-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #c5a059, #d4af37);
+    transition: width 0.4s ease;
+  }
+
+  .process-card:hover .step-hover-line {
+    width: 100%;
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .container {
+      padding: 0 40px;
+    }
+    
+    .process-grid {
+      gap: 20px;
+    }
+    
+    .step-title {
+      font-size: 1rem;
+    }
+    
+    .step-description {
+      font-size: 0.8rem;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .process-section {
+      padding: 80px 0;
+    }
+    
+    .process-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+    
+    .section-header {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 50px;
+    }
+
+    .heading-accent-line {
+      margin: 20px auto 25px auto;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .process-section {
+      padding: 60px 0;
+    }
+    
+    .container {
+      padding: 0 24px;
+    }
+    
+    .process-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+    }
+    
+    .section-desc {
+      font-size: 0.9rem;
+    }
+    
+    .process-card {
+      padding: 25px 20px;
+    }
+    
+    .step-number {
+      font-size: 2.5rem;
+    }
+    
+    .step-title {
+      font-size: 1rem;
+    }
+  }
+
+  /* Desktop Large */
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+    
+    .process-grid {
+      gap: 35px;
+    }
+    
+    .process-card {
+      padding: 40px 30px;
+    }
+    
+    .step-title {
+      font-size: 1.2rem;
+    }
+    
+    .step-description {
+      font-size: 0.9rem;
+    }
+  }
+</style>

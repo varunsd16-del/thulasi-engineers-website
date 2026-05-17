@@ -1,0 +1,144 @@
+---
+// ProjectCard.astro - Reusable Project Showcase Card
+const { title, category, location, img, link = "#" } = Astro.props;
+---
+
+<div class="project-card">
+  <div class="project-card__media">
+    <img 
+      src={img} 
+      alt={`${title} project in ${location} by Thulasi Engineers`} 
+      title={`Thulasi Engineers completed project: ${title} in ${location}`}
+      loading="lazy" 
+      decoding="async" 
+    />
+    <div class="project-card__overlay">
+      <div class="project-card__info">
+        <h3 class="project-card__name">{title}</h3>
+        <div class="project-card__loc">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          {location}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .project-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+  }
+
+  .project-card__media {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .project-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  .project-card:hover .project-card__media img {
+    transform: scale(1.15);
+  }
+
+  .project-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0.9;
+    transition: opacity 0.3s;
+  }
+
+  .project-card:hover .project-card__overlay {
+    opacity: 1;
+  }
+
+  .project-card__info {
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover .project-card__info {
+    transform: translateY(0);
+  }
+
+  .project-card__tag {
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-head);
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .project-card__name {
+    font-family: var(--font-head);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .project-card__loc {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #ccc;
+  }
+
+  .project-card__loc svg {
+    width: 14px;
+    height: 14px;
+    color: var(--red);
+  }
+
+  .project-card__link {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    color: var(--black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .project-card__link svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .project-card:hover .project-card__link {
+    transform: scale(1);
+  }
+
+  .project-card__link:hover {
+    background: var(--red);
+    color: #fff;
+  }
+</style>

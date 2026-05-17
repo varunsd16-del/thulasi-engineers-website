@@ -1,0 +1,477 @@
+---
+// Hero.astro - Modern Premium Light UI with Full Building Visible on Right
+---
+
+<section class="hero-light">
+  <!-- Full Background Image Layer -->
+  <div class="hero-bg-wrapper">
+    <img 
+      src="/images/hero/thulasi-engineers-construction-company-trichy.webp" 
+      alt="Thulasi Engineers - Building Tomorrow" 
+      class="hero-bg-img"
+      loading="eager"
+      fetchpriority="high"
+      decoding="sync"
+      width="1920"
+      height="1080"
+    />
+    <div class="hero-bg-overlay"></div>
+  </div>
+
+  <div class="hero-container">
+    <!-- LEFT SIDE: Text Content -->
+    <div class="hero-content">
+      <div class="hero-badge-group reveal-elem">
+        <div class="hero-badge">
+          TRICHY’S PREMIUM CONSTRUCTION & PMC EXPERTS
+        </div>
+        <!-- Local SEO Locality Signals - Moved to top for better context -->
+        <div class="hero-locality">
+          <span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="loc-icon">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>Serving Trichy and All Over Tamil Nadu
+          </span>
+        </div>
+      </div>
+      
+      <h1 class="hero-title reveal-elem" style="animation-delay: 0.2s;">
+        Engineering.<br/>
+        Tomorrow’s.<br/>
+        <span class="text-gold">Landmarks.</span>
+      </h1>
+     
+      <p class="hero-desc reveal-elem" style="animation-delay: 0.4s;">
+        Leading <strong>construction company in Trichy</strong> specializing in <strong>residential construction</strong>, <strong>commercial projects</strong>, <strong>turnkey building solutions</strong>, <strong>structural engineering</strong>, and <strong>Project Management Consultancy (PMC)</strong> services.
+      </p>
+      
+      <div class="hero-actions reveal-elem" style="animation-delay: 0.6s;">
+        <a href="/contact" class="btn-gold">BOOK FREE CONSULTATION →</a>
+        <a href="/projects" class="btn-outline">EXPLORE PROJECTS</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trust Signal Strip / Service Marquee - Moved to bottom for cleaner layout -->
+  <div class="hero-marquee reveal-elem" style="animation-delay: 1.4s;">
+    <div class="marquee-content">
+      <span>Residential Construction</span>
+      <span class="dot">•</span>
+      <span>Commercial Projects</span>
+      <span class="dot">•</span>
+      <span>PMC Consultancy</span>
+      <span class="dot">•</span>
+      <span>Structural Engineering</span>
+      <span class="dot">•</span>
+      <span>Turnkey Solutions</span>
+      <span class="dot">•</span>
+      <span>Industrial Construction</span>
+      <span class="dot">•</span>
+      <!-- Duplicate for seamless loop -->
+      <span>Residential Construction</span>
+      <span class="dot">•</span>
+      <span>Commercial Projects</span>
+      <span class="dot">•</span>
+      <span>PMC Consultancy</span>
+      <span class="dot">•</span>
+      <span>Structural Engineering</span>
+      <span class="dot">•</span>
+      <span>Turnkey Solutions</span>
+      <span class="dot">•</span>
+      <span>Industrial Construction</span>
+      <span class="dot">•</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-light {
+    position: relative;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 160px 0 60px;
+    box-sizing: border-box;
+  }
+
+  /* Full Background Image */
+  .hero-bg-wrapper {
+    position: absolute;
+    top: 138px; /* Starts exactly below the 138px absolute header */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+
+  .hero-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Changed from 'cover' to show FULL building */
+    object-position: 100% center; /* Align to the right side */
+    background-color: #ffffff; /* Match hero background */
+  }
+
+  /* Gradient overlay - stronger fade on left, transparent on right to show building */
+  .hero-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      #ffffff 40%,
+      #ffffff 30%,
+      rgba(255, 255, 255, 0.4) 50%,
+      transparent 85%
+    );
+    pointer-events: none;
+  }
+
+  /* Container */
+  .hero-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    width: 100%;
+  }
+
+  /* LEFT CONTENT */
+  .hero-content {
+    max-width: 550px;
+    text-align: left;
+  }
+
+  .hero-badge-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-family: var(--font-head);
+    padding: 8px 16px;
+    background: rgba(197, 160, 89, 0.15);
+    border: 1px solid rgba(197, 160, 89, 0.3);
+    border-radius: 4px;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.1);
+  }
+
+  /* Locality Signal (Subtle) */
+  .hero-locality {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: inline-block;
+  }
+
+  .loc-icon {
+    width: 14px;
+    height: 14px;
+    color: var(--primary);
+    display: inline-block;
+    vertical-align: -2px;
+    margin-right: 6px;
+  }
+
+  .hero-title {
+    font-size: var(--fs-display);
+    font-weight: var(--fw-hero);
+    line-height: var(--lh-tight);
+    color: var(--secondary);
+    margin-bottom: 30px;
+    font-family: var(--font-head);
+    letter-spacing: -0.03em;
+  }
+
+  .hero-desc {
+    font-size: var(--fs-base);
+    color: var(--text-body);
+    line-height: var(--lh-base);
+    margin-bottom: 45px;
+    max-width: 520px;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .btn-gold {
+    background: var(--primary);
+    color: var(--secondary);
+    padding: 16px 36px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+  }
+
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(197, 160, 89, 0.4);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--secondary);
+    border: 1.5px solid var(--secondary);
+    padding: 16px 36px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .btn-outline:hover {
+    background: rgba(13, 27, 62, 0.05);
+    transform: translateY(-3px);
+    border-color: var(--secondary);
+  }
+
+  /* Service Marquee (Bottom Fixed) */
+  .hero-marquee {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(13, 27, 62, 0.05);
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 15px 0;
+    z-index: 30;
+  }
+
+  .marquee-content {
+    display: flex;
+    align-items: center;
+    animation: marquee 40s linear infinite;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    opacity: 0.8;
+    width: max-content;
+  }
+
+  .dot {
+    margin: 0 25px;
+    color: var(--primary);
+    font-size: 1.2rem;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ANIMATIONS */
+  .reveal-elem {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* TABLET RESPONSIVE */
+  @media (max-width: 1024px) {
+    .hero-container {
+      padding: 0 40px;
+    }
+
+    .hero-content {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(10px);
+      padding: 45px 35px;
+      border-radius: 16px;
+      max-width: 540px;
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-badge-group {
+      justify-content: center;
+    }
+
+    .hero-locality {
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-desc {
+      max-width: 100%;
+    }
+
+    .hero-bg-overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.9) 0%,
+        rgba(255, 255, 255, 0.6) 50%,
+        rgba(255, 255, 255, 0.9) 100%
+      );
+    }
+
+    .hero-bg-img {
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.7;
+    }
+  }
+
+  /* MOBILE RESPONSIVE */
+  @media (max-width: 640px) {
+    .hero-light {
+      padding: 150px 0 100px; /* Increased top and bottom padding */
+      min-height: auto;
+    }
+
+    .hero-container {
+      padding: 0 24px;
+    }
+
+    .hero-content {
+      padding: 35px 24px;
+      max-width: 100%;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    .hero-title br {
+      display: none;
+    }
+
+    .hero-badge-group {
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .hero-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      padding: 6px 12px;
+    }
+
+    .hero-locality {
+      text-align: center;
+      width: 100%;
+      margin-top: 8px;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      text-align: center;
+      max-width: 100%;
+      margin-bottom: 35px;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+      align-items: stretch;
+    }
+
+    .hero-stats-card {
+      position: relative;
+      bottom: auto;
+      right: auto;
+      margin-top: 40px;
+      width: 100%;
+      padding: 20px;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-divider { display: none; }
+
+    .btn-gold, .btn-outline {
+      text-align: center;
+    }
+
+    .hero-bg-img {
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.85; /* Significantly more visible */
+    }
+
+    .hero-bg-overlay {
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.6) 100%
+      );
+    }
+  }
+
+  /* DESKTOP FINE-TUNING */
+  @media (min-width: 1400px) {
+    .hero-container {
+      padding: 0 80px;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero-title {
+      font-size: 5.5rem;
+    }
+  }
+</style>

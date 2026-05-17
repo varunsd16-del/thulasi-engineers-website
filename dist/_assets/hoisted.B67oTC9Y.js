@@ -1,0 +1,1 @@
+import"./hoisted.Cem8bTBj.js";const i=document.querySelectorAll(".js-faq-toggle");i.forEach(t=>{t.addEventListener("click",()=>{const e=t.parentElement,c=e?.classList.contains("active");document.querySelectorAll(".faq-item").forEach(s=>s.classList.remove("active")),!c&&e&&e.classList.add("active")})});

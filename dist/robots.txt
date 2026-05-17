@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thulasiengineers.com/sitemap.xml
+Sitemap: https://thulasiengineers.com/image-sitemap.xml

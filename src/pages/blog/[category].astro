@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../../layouts/engineering-authority-layout.astro';
+import CategoryBanner from '../../components/features/blog/CategoryBanner.astro';
+import BlogCard from '../../components/features/blog/BlogCard.astro';
+import ContactMini from '../../components/features/contact/ContactMini.astro';
+import { getCollection } from 'astro:content';
+import { categories, getCategoryBySlug } from '../../app/constants/blog.ts';
+
+export async function getStaticPaths() {
+  return categories.map(cat => ({
+    params: { category: cat.slug },
+    props: { category: cat }
+  }));
+}
+
+const { category } = Astro.props;
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.category === category.id;
+});
+
+// Sort posts by date
+const sortedPosts = allPosts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+
+const title = `${category.title} Authority Hub | Thulasi Engineers Trichy`;
+const description = `${category.description} Deep-dive into expert insights and engineering standards for ${category.title} in Trichy.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <CategoryBanner category={category} />
+
+  <section class="pillar-content">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-badge">KNOWLEDGE REPOSITORY</div>
+        <h2 class="section-title">Knowledge <span class="text-gold">Repository</span></h2>
+        <p class="section-sub">Latest articles, engineering guides, and expert insights in this category.</p>
+      </div>
+
+      {sortedPosts.length > 0 ? (
+        <div class="blog-grid">
+          {sortedPosts.map((post, index) => (
+            <div class="reveal-up" style={`transition-delay: ${index * 0.05}s`}>
+              <BlogCard post={post} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div class="empty-state reveal-up">
+          <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+          </svg>
+          <p>We are currently architecting new content for this authority hub. Check back soon for expert engineering insights.</p>
+          <a href="/blog" class="btn-outline-navy mt-20">Browse All Categories →</a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Pillar Sections (SEO Authority) -->
+  <section class="authority-sections">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <div class="section-badge">WHY TRUST OUR CONTENT</div>
+        <h2 class="section-title">Engineering <span class="text-gold">Authority</span></h2>
+        <p class="section-sub">Every article is crafted by industry experts and verified for accuracy.</p>
+      </div>
+
+      <div class="authority-grid">
+        <div class="authority-item reveal-up" style="transition-delay: 0.05s;">
+          <div class="authority-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3>Why This Engineering Silo Matters</h3>
+          <p>At Thulasi Engineers, we believe that informed clients make the best project partners. This dedicated knowledge center for {category.title} is designed to demystify complex construction processes and provide transparent, lab-verified information.</p>
+        </div>
+        <div class="authority-item reveal-up" style="transition-delay: 0.1s;">
+          <div class="authority-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M12 8v4l3 3"/>
+            </svg>
+          </div>
+          <h3>Localized Trichy Expertise</h3>
+          <p>Every guide in this category is optimized for the local Trichy landscape—considering soil conditions in Srirangam, building regulations in Thillai Nagar, and climate-specific engineering needs of Tamil Nadu.</p>
+        </div>
+        <div class="authority-item reveal-up" style="transition-delay: 0.15s;">
+          <div class="authority-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <h3>AI-Ready Documentation</h3>
+          <p>Our content is structured semantically to ensure it provides direct, accurate answers for modern search engines and AI assistants, making Thulasi the #1 digital authority in Trichy's construction sector.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* CSS Variables */
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+    --text-muted: #4b5563;
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --border-light: rgba(13, 27, 62, 0.08);
+  }
+
+  /* Pillar Content Section */
+  .pillar-content { 
+    padding: 80px 0; 
+    background: var(--bg-white); 
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 15px;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Blog Grid */
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 35px;
+  }
+
+  /* Empty State */
+  .empty-state {
+    padding: 80px 40px;
+    background: var(--bg-light);
+    border-radius: 20px;
+    text-align: center;
+    border: 2px dashed var(--border-light);
+  }
+
+  .empty-icon {
+    width: 60px;
+    height: 60px;
+    color: var(--gold);
+    margin: 0 auto 20px auto;
+    opacity: 0.5;
+  }
+
+  .empty-state p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+  }
+
+  .btn-outline-navy {
+    display: inline-block;
+    background: transparent;
+    color: var(--navy);
+    border: 1.5px solid var(--navy);
+    padding: 12px 28px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+
+  .btn-outline-navy:hover {
+    background: var(--navy);
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  .mt-20 {
+    margin-top: 20px;
+  }
+
+  /* Authority Sections */
+  .authority-sections { 
+    padding: 100px 0; 
+    background: var(--bg-light); 
+    border-top: 1px solid var(--border-light);
+  }
+
+  .authority-grid { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 40px; 
+    margin-top: 20px;
+  }
+
+  .authority-item { 
+    background: var(--bg-white);
+    padding: 35px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+    border: 1px solid var(--border-light);
+    text-align: center;
+  }
+
+  .authority-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(197, 160, 89, 0.3);
+    box-shadow: 0 20px 35px rgba(13, 27, 62, 0.05);
+  }
+
+  .authority-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(197, 160, 89, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px auto;
+    color: var(--gold);
+    transition: all 0.3s ease;
+  }
+
+  .authority-item:hover .authority-icon {
+    background: var(--gold);
+    color: var(--navy);
+    transform: scale(1.05);
+  }
+
+  .authority-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .authority-item h3 { 
+    font-size: 1.25rem; 
+    font-weight: 800; 
+    margin-bottom: 15px; 
+    color: var(--navy); 
+  }
+
+  .authority-item p { 
+    font-size: 0.95rem; 
+    line-height: 1.7; 
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 40px;
+    }
+
+    .authority-grid { 
+      grid-template-columns: 1fr; 
+      gap: 30px; 
+    }
+
+    .blog-grid {
+      gap: 25px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .pillar-content { 
+      padding: 60px 0; 
+    }
+
+    .authority-sections { 
+      padding: 60px 0; 
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .authority-item {
+      padding: 25px;
+    }
+
+    .authority-item h3 {
+      font-size: 1.1rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .section-sub {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+
+    .blog-grid {
+      gap: 40px;
+    }
+  }
+</style>

@@ -1,0 +1,67 @@
+---
+// AIAgentAnswers.astro - Optimized for AI Overviews and Featured Snippets
+interface Answer {
+  question: string;
+  answer: string;
+  id: string;
+}
+
+const answers: Answer[] = [
+  {
+    id: "cost-trichy",
+    question: "What is the average house construction cost per square foot in Trichy?",
+    answer: "The average house construction cost in Trichy for 2024 is ₹1,850 to ₹2,500 per sq.ft. Standard construction starts at ₹1,850, while premium villa construction with high-end finishes ranges from ₹2,200 to ₹2,500 per sq.ft."
+  },
+  {
+    id: "approval-time",
+    question: "How long does it take to get building plan approval in Trichy?",
+    answer: "Building plan approval from Trichy Corporation or DTCP typically takes 30 to 45 days. This includes document verification, site inspection by the authorities, and fee payment. Working with registered civil engineers can expedite this process."
+  },
+  {
+    id: "fsi-rules",
+    question: "What are the FSI rules for residential buildings in Trichy?",
+    answer: "Floor Space Index (FSI) rules in Trichy usually range from 1.5 to 2.0 for residential buildings, depending on the road width and locality. Higher FSI may be allowed for premium projects in specific commercial zones like Thillai Nagar."
+  },
+  {
+    id: "best-cement",
+    question: "Which cement is best for house construction in Tamil Nadu?",
+    answer: "For residential construction in Tamil Nadu, PPC (Portland Pozzolana Cement) is recommended for masonry and plastering, while OPC (Ordinary Portland Cement) 53 Grade is preferred for structural elements like beams, columns, and slabs."
+  }
+];
+---
+
+<section class="ai-answers">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">EXPERT KNOWLEDGE</div>
+      <h2 class="section-title">Quick Answers for <span>Construction</span> in Trichy</h2>
+      <p class="section-desc">Direct insights from our lead civil engineers to help you make informed decisions.</p>
+    </div>
+
+    <div class="answers-grid">
+      {answers.map(item => (
+        <div class="answer-card" id={item.id}>
+          <h3 class="answer-question">{item.question}</h3>
+          <div class="answer-text">
+            <p>{item.answer}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .ai-answers { padding: 100px 0; background: #fff; border-top: 1px solid #eee; }
+  .answers-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+  
+  .answer-card { background: #f9f9f9; padding: 40px; border-radius: 24px; border-left: 6px solid var(--red); transition: transform 0.3s; }
+  .answer-card:hover { transform: translateY(-5px); background: #fff; box-shadow: var(--shadow-lg); }
+  
+  .answer-question { font-family: var(--font-head); font-size: 1.2rem; font-weight: 800; margin-bottom: 20px; color: var(--black); line-height: 1.4; }
+  .answer-text p { font-size: 1rem; color: var(--text-body); line-height: 1.8; margin: 0; }
+
+  @media (max-width: 900px) {
+    .answers-grid { grid-template-columns: 1fr; }
+  }
+</style>

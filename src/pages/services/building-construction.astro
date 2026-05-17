@@ -1,0 +1,206 @@
+---
+import ServiceDetailLayout from '../../layouts/turnkey-service-detail-layout.astro';
+
+const service = {
+  title: 'Top Building Construction Company in Trichy | Residential & Commercial Builders',
+  shortTitle: 'Building Construction',
+  image: '/images/services/residential-commercial-building-construction-trichy.webp',
+  description: 'Thulasi Engineers & Contractors is the premier building construction company in Trichy, offering high-quality residential, commercial, and villa construction with DTCP approvals.',
+  features: ['DTCP & Trichy Corporation Plan Approvals', 'Vastu-Compliant Architectural Design', 'High-Quality Material Sourcing', 'Transparent Cost Estimation', 'Structural Stability Certificate'],
+  faqs: [
+    { q: 'What is the current construction cost per sq.ft in Trichy?', a: 'As of 2024, construction costs in Trichy range from ₹1,850 to ₹2,400 per sq.ft depending on the material specifications and location.' },
+    { q: 'How long does it take to complete an independent house?', a: 'A standard 2,000 sq.ft house typically takes 10 to 12 months for completion including interior works.' }
+  ]
+};
+
+const constructionTypes = [
+  { title: 'Residential Buildings', image: '/images/services/custom-3d-elevation-designs-trichy.webp', desc: 'Luxury villas, independent houses, and modern apartments tailored for comfort.' },
+  { title: 'Commercial Buildings', image: '/images/services/turnkey-commercial-building-contractors-trichy.webp', desc: 'State-of-the-art office spaces, retail hubs, and business centers.' },
+  { title: 'Industrial Buildings', image: '/images/services/factory-warehouse-peb-shed-builders-trichy.webp', desc: 'High-performance factories, warehouses, and industrial sheds.' },
+  { title: 'Institutional Buildings', image: '/images/services/institutional-school-college-builders-trichy.webp', desc: 'Educational institutions, schools, and community centers built for the future.' },
+  { title: 'Religious Buildings', image: '/images/services/religious-temple-church-construction-trichy.webp', desc: 'Elegant temples, churches, and spiritual centers with architectural excellence.' },
+  { title: 'Roads and Bridges', image: '/images/services/civil-infrastructure-roads-bridges-development-trichy.webp', desc: 'Durable infrastructure, flyovers, and highway bridges for seamless connectivity.' },
+  { title: 'Others', image: '/images/services/others.webp', desc: 'Specialized construction projects and custom architectural solutions.' }
+];
+---
+
+<ServiceDetailLayout service={service}>
+  <div class="content-wrapper">
+    <div class="section-intro">
+      <h2>Premier Building Construction in Tiruchirappalli</h2>
+      <p>Thulasi Engineers & Contractors has established itself as the <strong>top building construction company in Trichy</strong>, delivering architectural excellence for over a decade. Our expertise spans across luxury residential villas, modern independent houses, and high-performance commercial hubs.</p>
+    </div>
+    
+    <div class="portfolio-section">
+      <div class="section-header">
+        <div class="section-label">OUR EXPERTISE</div>
+        <h3>Our Comprehensive Construction Portfolio</h3>
+        <p>We specialize in a wide range of building projects, ensuring every structure is built with precision and durability:</p>
+      </div>
+
+      <div class="construction-grid">
+        {constructionTypes.map((type, index) => (
+          <div class="construction-card" style={`animation-delay: ${0.1 * index}s`}>
+            <div class="card-image">
+              <img src={type.image} alt={type.title} loading="lazy" />
+              <div class="card-overlay">
+                <span class="card-tag">EXCELLENCE</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h4>{type.title}</h4>
+              <p>{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="section-why">
+      <h3>Why We Are the Best Builders in Trichy</h3>
+      <p>We combine traditional building values with modern structural engineering. As registered <strong>civil engineers in Trichy</strong>, we ensure that every structure is built to last for generations. Our process includes soil testing, Vastu-compliant architectural planning, and rigorous material quality checks.</p>
+    </div>
+    
+    <div class="section-quality">
+      <h3>Quality Standards</h3>
+      <p>We use premium brands like Tata Tiscon steel and Ultratech cement to guarantee structural integrity. Our construction process is transparent, with regular site updates and strict adherence to timelines.</p>
+    </div>
+  </div>
+</ServiceDetailLayout>
+
+<style>
+  /* Override layout styles for white background aesthetic */
+  :global(.service-details) {
+    background: #ffffff !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  :global(.details-text) {
+    color: #333;
+  }
+
+  :global(.details-text h2, .details-text h3, .details-text h4) {
+    color: #111 !important;
+  }
+
+  :global(.details-sidebar .sidebar-card) {
+    border: 1px solid #eee;
+    background: #fafafa;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h3 {
+    margin-top: 0 !important;
+    font-size: 2.2rem !important;
+    margin-bottom: 15px;
+  }
+
+  /* Construction Grid */
+  .construction-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .construction-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #d1d5db;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .construction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: #9ca3af;
+  }
+
+  .card-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .construction-card:hover .card-image img {
+    transform: scale(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .card-tag {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    color: #111;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .construction-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .card-image {
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-header h3 {
+      font-size: 1.8rem !important;
+    }
+  }
+</style>
+

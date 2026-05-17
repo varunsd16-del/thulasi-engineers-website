@@ -1,0 +1,311 @@
+---
+// Welcome.astro - Premium Light Welcome Section matching reference image
+---
+
+<section class="welcome-section">
+  <div class="container welcome-container">
+    <!-- LEFT SIDE: Text Content -->
+    <div class="welcome-text">
+      <div class="welcome-badge reveal-elem">
+        WHO WE ARE
+      </div>
+      
+      <h2 class="welcome-title reveal-elem" style="animation-delay: 0.1s;">
+        Building Spaces.<br/>Building Trust.
+      </h2>
+      
+      <p class="welcome-description reveal-elem" style="animation-delay: 0.2s;">
+        Thulasi Engineers & Contracts is a trusted name in engineering, construction, and project management. We turn ideas into reality with quality, safety, and timely delivery.
+      </p>
+      
+      <div class="welcome-action reveal-elem" style="animation-delay: 0.3s;">
+        <a href="/about" class="btn-outline-navy">MORE ABOUT US</a>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE: Stacked Service Cards -->
+    <div class="welcome-services">
+      <!-- Service 1: Construction -->
+      <div class="service-card reveal-elem" style="animation-delay: 0.15s;">
+        <div class="service-card-content">
+          <span class="service-number">01</span>
+          <h3 class="service-title">CONSTRUCTION</h3>
+          <div class="service-line"></div>
+        </div>
+      </div>
+
+      <!-- Service 2: Project Management -->
+      <div class="service-card reveal-elem" style="animation-delay: 0.25s;">
+        <div class="service-card-content">
+          <span class="service-number">02</span>
+          <h3 class="service-title">PROJECT MANAGEMENT</h3>
+          <div class="service-line"></div>
+        </div>
+      </div>
+
+      <!-- Service 3: Design & Build Solutions -->
+      <div class="service-card reveal-elem" style="animation-delay: 0.35s;">
+        <div class="service-card-content">
+          <span class="service-number">03</span>
+          <h3 class="service-title">DESIGN & BUILD SOLUTIONS</h3>
+          <div class="service-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .welcome-section {
+    padding: 70px 0;
+    background: #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .welcome-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+  }
+
+  /* LEFT TEXT CONTENT */
+  .welcome-text {
+    flex: 1;
+    max-width: 550px;
+  }
+
+  .welcome-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #c5a059;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .welcome-title {
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #0d1b3e;
+    margin-bottom: 25px;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
+  }
+
+  .welcome-description {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin-bottom: 35px;
+  }
+
+  .btn-outline-navy {
+    display: inline-block;
+    background: transparent;
+    color: #0d1b3e;
+    border: 1.5px solid #0d1b3e;
+    padding: 12px 32px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .btn-outline-navy:hover {
+    background: #0d1b3e;
+    color: #ffffff;
+    transform: translateY(-2px);
+  }
+
+  /* RIGHT SERVICE CARDS - STACKED VERTICALLY */
+  .welcome-services {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .service-card {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border: 1px solid rgba(13, 27, 62, 0.08);
+    border-radius: 12px;
+    padding: 28px 32px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, #0d1b3e 0%, #1a2b5e 100%);
+    transition: width 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 0;
+  }
+
+  .service-card:hover::before {
+    width: 100%;
+  }
+
+  .service-card-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .service-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #c5a059;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    min-width: 55px;
+  }
+
+  .service-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0d1b3e;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0;
+    transition: color 0.3s ease;
+    flex: 1;
+  }
+
+  .service-line {
+    width: 40px;
+    height: 2px;
+    background: #c5a059;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover Effects */
+  .service-card:hover .service-number {
+    color: #c5a059;
+    opacity: 1;
+    transform: translateX(5px);
+  }
+
+  .service-card:hover .service-title {
+    color: #ffffff;
+  }
+
+  .service-card:hover .service-line {
+    width: 60px;
+    background: #c5a059;
+  }
+
+  /* ANIMATIONS */
+  .reveal-elem {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .welcome-container {
+      flex-direction: column;
+      gap: 60px;
+      padding: 0 40px;
+    }
+
+    .welcome-text {
+      text-align: center;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .welcome-description {
+      max-width: 100%;
+    }
+
+    .welcome-services {
+      width: 100%;
+    }
+
+    .service-card-content {
+      justify-content: space-between;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .welcome-section {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .welcome-title {
+      font-size: 2rem;
+    }
+
+    .welcome-description {
+      font-size: 0.95rem;
+    }
+
+    .service-card {
+      padding: 20px 24px;
+    }
+
+    .service-number {
+      font-size: 1.5rem;
+      min-width: 45px;
+    }
+
+    .service-title {
+      font-size: 0.8rem;
+    }
+
+    .service-line {
+      width: 30px;
+    }
+  }
+
+  /* Small Desktop */
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+
+    .welcome-text {
+      max-width: 600px;
+    }
+
+    .welcome-title {
+      font-size: 4rem;
+    }
+  }
+</style>

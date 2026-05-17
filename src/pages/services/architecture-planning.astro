@@ -1,0 +1,204 @@
+---
+import ServiceDetailLayout from '../../layouts/turnkey-service-detail-layout.astro';
+
+const service = {
+  title: 'Architectural Planning & DTCP Approval Services in Trichy',
+  shortTitle: 'Architecture & Planning',
+  image: '/images/services/3d-architectural-plans-aesthetic-render-trichy.webp',
+  description: 'Creative architectural design, 3D floor plans, and DTCP approval services in Trichy for residential and commercial projects.',
+  features: ['DTCP & Corporation Plan Approvals', 'Vastu-Compliant 2D/3D Design', 'Modern Elevation Designs', 'Site Survey & Land Analysis', 'BOQ & Documentation'],
+  faqs: [
+    { q: 'How long does it take to get DTCP approval in Trichy?', a: 'The approval process usually takes 45 to 90 days depending on the project scale and local body workload.' },
+    { q: 'Do you provide Vastu-compliant designs?', a: 'Yes, all our architectural plans are designed according to Vastu Shastra principles while maintaining modern functionality.' }
+  ]
+};
+
+const architectureTypes = [
+  { title: '2D Drafting & Floor Plans', image: '/images/services/vastu-compliant-2d-drafting-floor-plans-trichy.webp', desc: 'Precision-engineered floor plans and blueprints tailored to your specific requirements and Vastu principles.' },
+  { title: '3D Elevation Designs', image: '/images/services/custom-3d-elevation-designs-trichy.webp', desc: 'Photorealistic 3D visualizations that bring your dream project to life before construction begins.' },
+  { title: 'DTCP & Corporation Approvals', image: '/images/services/dtcp-corporation-building-plan-approvals-trichy.webp', desc: 'Hassle-free building permit and approval services from Trichy local bodies and DTCP authorities.' },
+  { title: 'Interior Planning', image: '/images/services/modular-kitchen-bathroom-interior-space-planning-trichy.webp', desc: 'Optimized space planning and interior layouts for residential and commercial excellence.' },
+  { title: 'Landscape Design', image: '/images/services/integrated-landscape-garden-outdoor-space-design-trichy.webp', desc: 'Beautifully integrated outdoor spaces and green landscapes for a holistic living experience.' },
+  { title: 'BOQ & Documentation', image: '/images/services/bill-of-quantities-boq-technical-documentation-trichy.webp', desc: 'Detailed Bill of Quantities and technical documentation for accurate project estimation and bidding.' }
+];
+---
+
+<ServiceDetailLayout service={service}>
+  <div class="content-wrapper">
+    <div class="section-intro">
+      <h2>Expert Architectural Design & Planning</h2>
+      <p>Success in construction starts on the drawing board. Our <strong>architects in Trichy</strong> blend traditional Vastu principles with contemporary design trends to create functional and stunning structures.</p>
+    </div>
+    
+    <div class="portfolio-section">
+      <div class="section-header">
+        <div class="section-label">OUR EXPERTISE</div>
+        <h3>Our Architectural Solutions</h3>
+        <p>From initial concepts to final approvals, we provide comprehensive planning services:</p>
+      </div>
+
+      <div class="construction-grid">
+        {architectureTypes.map((type, index) => (
+          <div class="construction-card" style={`animation-delay: ${0.1 * index}s`}>
+            <div class="card-image">
+              <img src={type.image} alt={type.title} loading="lazy" />
+              <div class="card-overlay">
+                <span class="card-tag">DESIGN</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h4>{type.title}</h4>
+              <p>{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="section-why">
+      <h3>DTCP & Corporation Approvals</h3>
+      <p>Navigating building regulations in Trichy can be complex. We handle the entire <strong>DTCP approval</strong> and <strong>Trichy Corporation plan approval</strong> process, ensuring your project is 100% compliant and legally secure.</p>
+    </div>
+    
+    <div class="section-quality">
+      <h3>3D Architectural Visualization</h3>
+      <p>See your dream project before it is built. We provide high-resolution 3D floor plans, elevation designs, and virtual walkthroughs for villas in <strong>Srirangam</strong> and commercial buildings in <strong>Cantonment</strong>.</p>
+    </div>
+  </div>
+</ServiceDetailLayout>
+
+<style>
+  /* Override layout styles for white background aesthetic */
+  :global(.service-details) {
+    background: #ffffff !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  :global(.details-text) {
+    color: #333;
+  }
+
+  :global(.details-text h2, .details-text h3, .details-text h4) {
+    color: #111 !important;
+  }
+
+  :global(.details-sidebar .sidebar-card) {
+    border: 1px solid #eee;
+    background: #fafafa;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h3 {
+    margin-top: 0 !important;
+    font-size: 2.2rem !important;
+    margin-bottom: 15px;
+  }
+
+  /* Construction Grid */
+  .construction-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .construction-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #d1d5db;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .construction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: #9ca3af;
+  }
+
+  .card-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .construction-card:hover .card-image img {
+    transform: scale(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .card-tag {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    color: #111;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .construction-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .card-image {
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-header h3 {
+      font-size: 1.8rem !important;
+    }
+  }
+</style>

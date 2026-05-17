@@ -1,0 +1,439 @@
+---
+import Header from '../components/common/thulasi-branding-header.astro';
+import Footer from '../components/common/engineering-authority-footer.astro';
+import FloatingActions from '../components/common/floating-action-triggers.astro';
+import Chatbot from '../components/common/whatsapp-chatbot-widget.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  image?: string;
+  type?: string;
+  activeNav?: string;
+  schema?: object | object[];
+  preloadImage?: string;
+}
+
+const { 
+  title = `${SITE_METADATA.name} | Premium Construction in Trichy`,
+  description = SITE_METADATA.description,
+  keywords = "construction company in trichy, best builders in trichy, civil engineers in trichy, building contractors in trichy, luxury construction trichy",
+  canonical,
+  image = "/images/hero/og-construction-company-trichy.webp",
+  type = "website",
+  activeNav = "",
+  schema,
+  preloadImage
+} = Astro.props;
+
+const siteUrl = Astro.url.origin;
+const currentUrl = Astro.url.href;
+let finalCanonical = canonical || currentUrl;
+if (finalCanonical && !finalCanonical.endsWith('/')) {
+  const lastSegment = finalCanonical.split('/').pop();
+  if (lastSegment && !lastSegment.includes('.')) {
+    finalCanonical += '/';
+  }
+}
+
+// Default LocalBusiness Schema
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": SITE_METADATA.name,
+  "image": {
+    "@type": "ImageObject",
+    "url": `${siteUrl}/images/hero/og-construction-company-trichy.webp`,
+    "caption": "Thulasi Engineers & Contractors - Premium Turnkey Construction and PMC Consultants in Trichy",
+    "inLanguage": "en-US"
+  },
+  "@id": `${siteUrl}/#localbusiness`,
+  "url": siteUrl,
+  "telephone": SITE_METADATA.phone,
+  "priceRange": "₹₹₹",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": SITE_METADATA.address.street,
+    "addressLocality": SITE_METADATA.address.city,
+    "postalCode": SITE_METADATA.address.zip,
+    "addressRegion": SITE_METADATA.address.state,
+    "addressCountry": "IN"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 10.8767,
+    "longitude": 78.7121
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  },
+  "areaServed": {
+    "@type": "GeoCircle",
+    "geoMidpoint": {
+      "@type": "GeoCoordinates",
+      "latitude": 10.7905,
+      "longitude": 78.7047
+    },
+    "geoRadius": "50000"
+  }
+};
+
+// Combine schemas
+const combinedSchema = Array.isArray(schema) 
+  ? [localBusinessSchema, ...schema] 
+  : schema 
+    ? [localBusinessSchema, schema] 
+    : localBusinessSchema;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href={finalCanonical} />
+  {preloadImage && <link rel="preload" href={preloadImage} as="image" fetchpriority="high" />}
+
+  <!-- GEO SEO -->
+  <meta name="geo.region" content="IN-TN" />
+  <meta name="geo.placename" content="Trichy" />
+  <meta name="geo.position" content="10.876722;78.712128" />
+  <meta name="ICBM" content="10.876722, 78.712128" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={currentUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, Astro.url)} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={currentUrl} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(combinedSchema)} />
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="page-loading">
+  <!-- Subtle Light Grain Overlay -->
+  <div class="site-noise"></div>
+
+  <!-- Smooth Page Reveal Wrapper -->
+  <div class="site-wrapper">
+    <Header activeNav={activeNav} />
+    
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+  </div>
+
+  <!-- Global Fixed Widgets (Outside wrapper to ensure fixed positioning) -->
+  <FloatingActions />
+  <Chatbot />
+
+  <style is:global>
+    /* ── Foundational CSS Variables for Light Theme ── */
+    :root {
+      --navy: #0d1b3e;
+      --gold: #c5a059;
+      --gold-light: #d4af37;
+      --bg-white: #ffffff;
+      --bg-light: #f8fafc;
+      --text-dark: #0d1b3e;
+      --text-muted: #4b5563;
+      --text-light: #6b7280;
+      --border-light: rgba(13, 27, 62, 0.08);
+      
+      /* Legacy compatibility variables */
+      --bg-dark: #ffffff;
+      --bg-darker: #f8fafc;
+      --accent-blue: var(--gold);
+      --accent-gold: var(--gold);
+      --primary: #c5a059;
+      --primary-dark: #b8860b;
+      --accent-red: var(--gold);
+      --red: var(--gold);
+      --text-main: #0d1b3e;
+      --glass-border: rgba(13, 27, 62, 0.08);
+      --font-primary: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-heading: 'Montserrat', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--bg-white);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: var(--font-primary);
+      background-color: var(--bg-white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    /* Container Utility */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    /* Section Badge */
+    .section-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      display: inline-block;
+    }
+
+    /* Global Button Styles */
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3);
+    }
+
+    .btn-outline-navy {
+      display: inline-block;
+      background: transparent;
+      color: var(--navy);
+      border: 1.5px solid var(--navy);
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline-navy:hover {
+      background: var(--navy);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-white {
+      display: inline-block;
+      background: transparent;
+      color: #ffffff;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .btn-outline-white:hover {
+      background: #ffffff;
+      color: var(--navy);
+      border-color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.1);
+    }
+
+    /* Info Icon (for contact pages) */
+    .info-icon { 
+      width: 50px; 
+      height: 50px; 
+      background: rgba(197, 160, 89, 0.1); 
+      color: var(--gold); 
+      border-radius: 12px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      flex-shrink: 0; 
+      transition: all 0.3s ease;
+    }
+
+    .info-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    .contact-main-heading span { 
+      color: var(--gold); 
+    }
+
+    /* ── Subtle Light Noise Overlay ── */
+    .site-noise {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.015;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* ── Page Load Transitions ── */
+    .site-wrapper {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body.page-loaded .site-wrapper {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Page Loading State */
+    body.page-loading {
+      overflow: hidden;
+    }
+
+    /* Utility Classes */
+    .text-center {
+      text-align: center;
+    }
+
+    .text-gold {
+      color: var(--gold);
+    }
+
+    .text-navy {
+      color: var(--navy);
+    }
+
+    /* Responsive Container */
+    @media (max-width: 1024px) {
+      .container {
+        padding: 0 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 24px;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .container {
+        padding: 0 80px;
+      }
+    }
+  </style>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      
+      // 1. Smooth Page Reveal on Load
+      requestAnimationFrame(() => {
+        document.body.classList.remove('page-loading');
+        document.body.classList.add('page-loaded');
+      });
+
+      // 2. Image Optimization
+      const images = document.querySelectorAll('img:not(.hero-img)');
+      images.forEach(img => {
+        if (!img.hasAttribute('loading')) img.setAttribute('loading', 'lazy');
+        if (!img.hasAttribute('decoding')) img.setAttribute('decoding', 'async');
+      });
+
+      // 3. Scroll Animations Observer (Reveal Animation)
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all elements with animation classes
+      const animatedElements = document.querySelectorAll('.reveal-up, .reveal-elem, [data-aos]');
+      animatedElements.forEach(el => observer.observe(el));
+
+      // 4. Handle smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+          const targetId = anchor.getAttribute('href');
+          if (targetId === '#') return;
+          
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+---
+import BaseLayout from '../../layouts/engineering-authority-layout.astro';
+import ContactMini from '../../components/features/contact/ContactMini.astro';
+import FAQ from '../../components/features/seo/FAQ.astro';
+
+export async function getStaticPaths() {
+  const projects = [
+    {
+      slug: 'villa-construction-srirangam',
+      title: 'Luxury Villa Construction in Srirangam',
+      location: 'Srirangam, Trichy',
+      landmark: 'Ranganathaswamy Temple',
+      client: 'Dr. Rajesh Kumar',
+      timeline: '12 Months',
+      area: '3500 Sq.Ft.',
+      materials: 'UltraTech Cement, JSW Steel, Teak Wood Doors, Italian Marble',
+      desc: 'A premium 4BHK luxury villa project in the heart of Srirangam, designed with traditional aesthetics and modern structural engineering.'
+    },
+    {
+      slug: 'commercial-building-thillai-nagar',
+      title: 'Modern Commercial Complex in Thillai Nagar',
+      location: 'Thillai Nagar, Trichy',
+      landmark: 'Makkal Mandram',
+      client: 'V-Connect Spaces',
+      timeline: '18 Months',
+      area: '12000 Sq.Ft.',
+      materials: 'Concrete Grade M25, Glass Glazing, Fire Safety Systems',
+      desc: 'A state-of-the-art commercial building project in Thillai Nagar featuring premium office spaces and retail outlets.'
+    },
+    {
+      slug: 'house-construction-kk-nagar',
+      title: 'Independent House Construction in KK Nagar',
+      location: 'KK Nagar, Trichy',
+      landmark: 'LIC Colony',
+      client: 'Mr. Subramanian',
+      timeline: '10 Months',
+      area: '2200 Sq.Ft.',
+      materials: 'Dalmia Cement, TATA Tiscon, Jaquar Fittings, Asian Paints',
+      desc: 'A modern duplex house in KK Nagar focusing on space optimization and natural lighting.'
+    }
+  ];
+
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<BaseLayout title={`${project.title} | Thulasi Engineers`} description={`Detailed case study of ${project.title} at ${project.location}. Explore materials used, project timeline, and structural highlights.`}>
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/industrial-peb-warehouse-foundation-thuvakudi.webp" alt={project.title} class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="section-badge">CASE STUDY</div>
+      <h1 class="page-banner__title">{project.title}</h1>
+      <p class="page-banner__subtitle">Completed Landmark Project in <span class="text-gold">{project.location}</span></p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <a href="/projects" class="magnetic-elem">Projects</a>
+        <span class="sep">/</span>
+        <span class="current">Project Detail</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="project-detail">
+    <div class="container">
+      <div class="project-grid">
+        <div class="project-main">
+          <h2>Project Overview: {project.title}</h2>
+          <p>{project.desc}</p>
+          
+          <div class="project-gallery">
+            <div class="gallery-main">
+              <img src="/images/localities/architectural-plans-approval-verification-trichy.webp" alt="Completed Project View" class="rounded shadow" />
+            </div>
+            <div class="gallery-thumbs">
+              <img src="/images/localities/project-management-procurement-cost-tracking-trichy.webp" alt="Interior View" class="rounded" />
+              <img src="/images/localities/construction-site-ppe-compliance-safety-check-trichy.webp" alt="Structural View" class="rounded" />
+              <img src="/images/localities/eco-friendly-fly-ash-brick-construction-trichy.webp" alt="Finishing View" class="rounded" />
+            </div>
+          </div>
+
+          <div class="engineering-report">
+            <h3>Engineering & Structural Challenges</h3>
+            <p>
+              Every construction project in <strong>{project.location}</strong> comes with unique site conditions. For this {project.title}, our primary challenge was the <strong>high water table</strong> near <strong>{project.landmark}</strong>. 
+            </p>
+            
+            <div class="challenge-box">
+              <div class="challenge-item">
+                <strong>Sub-structure Solution:</strong>
+                <p>Implemented specialized <strong>damp-proofing</strong> and a reinforced raft foundation using <strong>M25 grade concrete</strong> to prevent moisture seepage.</p>
+              </div>
+              <div class="challenge-item">
+                <strong>Structural Design:</strong>
+                <p>Optimized the column placement to achieve a column-free layout in the main hall, using <strong>JSW Neosteel FE550D</strong> for maximum tensile strength.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>Premium Materials Inventory</h3>
+          <p>We used an "A-Grade" material list to ensure the structure lasts for generations:</p>
+          <div class="material-grid">
+            <div class="m-item"><strong>Cement:</strong> UltraTech Super / Dalmia DSP</div>
+            <div class="m-item"><strong>Steel:</strong> JSW Neosteel / TATA Tiscon</div>
+            <div class="m-item"><strong>Electrical:</strong> Finolex Pipes / Havells Wiring</div>
+            <div class="m-item"><strong>Plumbing:</strong> Ashirvad CPVC / Jaquar Fittings</div>
+          </div>
+
+          <div class="project-testimonial">
+            <div class="quote-icon">"</div>
+            <blockquote>
+              "Thulasi Engineers delivered exactly what we envisioned for our home in {project.location}. Their attention to detail and transparency in material costs were exceptional."
+            </blockquote>
+            <cite>— {project.client}</cite>
+          </div>
+        </div>
+
+        <aside class="project-sidebar">
+          <div class="project-info-box">
+            <h4>Project Details</h4>
+            <ul>
+              <li><strong>Location:</strong> {project.location}</li>
+              <li><strong>Landmark:</strong> Near {project.landmark}</li>
+              <li><strong>Client:</strong> {project.client}</li>
+              <li><strong>Timeline:</strong> {project.timeline}</li>
+              <li><strong>Built Area:</strong> {project.area}</li>
+            </ul>
+          </div>
+
+          <div class="sidebar-cta">
+            <h4>Want a similar project?</h4>
+            <p>Consult with our lead engineer for a personalized architectural plan.</p>
+            <a href="/contact" class="btn btn--red w-full">ENQUIRE NOW</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <FAQ />
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--gold);
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .project-detail { padding: 100px 0; }
+  .project-grid { display: grid; grid-template-columns: 8.5fr 3.5fr; gap: 60px; }
+
+  .project-main h2 { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; }
+  .project-main h3 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin-top: 50px; margin-bottom: 20px; }
+  .project-main p { font-size: 1.1rem; line-height: 1.8; color: var(--text-body); margin-bottom: 25px; }
+
+  /* Gallery */
+  .project-gallery { margin: 40px 0; display: flex; flex-direction: column; gap: 20px; }
+  .gallery-main img { width: 100%; height: 500px; object-fit: cover; }
+  .gallery-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .gallery-thumbs img { width: 100%; height: 180px; object-fit: cover; }
+
+  /* Materials */
+  .materials-list { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 40px; }
+  .material-tag { background: #f0f0f0; padding: 10px 20px; border-radius: 50px; font-size: 0.9rem; font-weight: 600; color: var(--black); border: 1px solid #e0e0e0; }
+
+  /* Testimonial */
+  .project-testimonial { background: var(--dark); color: #fff; padding: 50px; border-radius: 24px; position: relative; margin-top: 60px; }
+  .quote-icon { position: absolute; top: 20px; left: 30px; font-size: 5rem; opacity: 0.1; line-height: 1; font-family: serif; }
+  .project-testimonial blockquote { font-size: 1.25rem; font-style: italic; margin-bottom: 20px; line-height: 1.6; }
+  .project-testimonial cite { font-weight: 700; color: var(--red); }
+
+  /* Sidebar */
+  .project-info-box { background: #fff; padding: 40px; border-radius: 20px; border: 1px solid var(--gray-border); margin-bottom: 30px; }
+  .project-info-box h4 { font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 25px; border-bottom: 2px solid var(--red); padding-bottom: 15px; }
+  .project-info-box ul { list-style: none; padding: 0; }
+  .project-info-box li { margin-bottom: 18px; font-size: 0.95rem; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+  .project-info-box li:last-child { border-bottom: none; }
+  .project-info-box strong { color: var(--black); display: block; font-size: 0.75rem; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 5px; }
+
+  .sidebar-cta { background: var(--red); color: #fff; padding: 40px; border-radius: 20px; text-align: center; }
+  .sidebar-cta h4 { margin-bottom: 15px; }
+  .sidebar-cta p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 25px; }
+  .w-full { width: 100%; background: #fff; color: var(--red); }
+
+  @media (max-width: 1024px) {
+    .project-grid { grid-template-columns: 1fr; }
+    .gallery-main img { height: 350px; }
+    .gallery-thumbs img { height: 120px; }
+    .page-banner { 
+      min-height: 40vh; 
+      padding-top: 120px; 
+      padding-bottom: 80px; 
+    }
+  }
+</style>

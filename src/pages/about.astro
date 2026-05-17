@@ -1,0 +1,795 @@
+---
+import BaseLayout from '../layouts/engineering-authority-layout.astro';
+import StatsBar from '../components/features/services/StatsBar.astro';
+import ContactMini from '../components/features/contact/ContactMini.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+
+// SEO Metadata for About Page
+const pageTitle = `About ${SITE_METADATA.name} | Best Builders in Trichy`;
+const pageDescription = SITE_METADATA.description;
+const pageKeywords = "best builders in trichy, construction company trichy, civil engineers tiruchirappalli, building contractors trichy, registered civil engineers trichy";
+---
+
+<BaseLayout title={pageTitle} description={pageDescription} keywords={pageKeywords} activeNav="about">
+  
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/luxury-villa-facade-elevation-design-srirangam.webp" alt="Thulasi Engineers Office - Best Builders in Trichy" class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="section-badge">COMPANY PROFILE</div>
+      <h1 class="page-banner__title">ABOUT <span class="text-gold">OUR LEGACY</span></h1>
+      <p class="page-banner__subtitle">Building Excellence in Trichy with 10+ Years of Engineering Expertise.</p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <span class="current">About Us</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Who We Are Section -->
+  <section class="about-intro">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-content">
+          <div class="section-badge reveal-up">ESTABLISHED 2014</div>
+          <h2 class="section-title reveal-up" style="transition-delay: 0.1s;">A Tradition of <span class="text-gold">Engineering</span> Excellence</h2>
+          
+          <div class="content-body reveal-up" style="transition-delay: 0.2s;">
+            <p>
+              <strong>Thulasi Engineers & Contractors</strong> is a premier construction firm based in Tiruchirappalli, dedicated to delivering state-of-the-art building solutions. As <strong>registered civil engineers in Trichy</strong>, we have earned a reputation for structural integrity, architectural beauty, and absolute transparency.
+            </p>
+            <p>
+              Our journey began with a simple mission: to provide high-quality construction in Trichy without compromising on materials or ethics. Today, we stand as one of the most trusted <strong>building contractors</strong> in the region, having successfully delivered over 30+ projects.
+            </p>
+          </div>
+
+          <div class="trust-badges reveal-up" style="transition-delay: 0.3s;">
+            <div class="badge-item magnetic-elem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+              <span>Registered Civil Engineer</span>
+            </div>
+            <div class="badge-item magnetic-elem">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+              <span>Uncompromising Quality Standards</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-image-wrapper reveal-up" style="transition-delay: 0.2s;">
+          <img src="/images/localities/vastu-compliant-architectural-drafting-office-trichy.webp" alt="Thulasi Engineers Site Management" class="about-image" />
+          <div class="image-accent-border"></div>
+          
+          <div class="exp-box reveal-up" style="transition-delay: 0.4s;">
+            <div class="exp-num">10<span class="plus">+</span></div>
+            <div class="exp-text">
+              Years Of<br/>Engineering Mastery
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission & Vision Section -->
+  <section class="mission-vision">
+    <div class="container">
+      <div class="section-header reveal-up">
+        <div class="section-badge">PURPOSE & DIRECTION</div>
+        <h2 class="section-title">Our Foundational <span class="text-gold">Pillars</span></h2>
+        <p class="section-desc">Guided by a clear mission and a bold vision, we strive to redefine the construction landscape in Tamil Nadu through precision engineering.</p>
+      </div>
+
+      <div class="mv-grid">
+        <!-- Mission Card -->
+        <div class="mv-card reveal-up" style="transition-delay: 0.1s;">
+          <div class="mv-card__glow"></div>
+          <div class="mv-card__content">
+            <div class="mv-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>
+            </div>
+            <h3 class="mv-card__title">Our <span class="text-gold">Mission</span></h3>
+            <p class="mv-card__text">
+              To lead the construction industry by providing innovative, cost-effective, and high-quality building solutions that empower our clients to live and work in structurally flawless spaces.
+            </p>
+          </div>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="mv-card reveal-up" style="transition-delay: 0.3s;">
+          <div class="mv-card__glow"></div>
+          <div class="mv-card__content">
+            <div class="mv-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="mv-card__title">Our <span class="text-gold">Vision</span></h3>
+            <p class="mv-card__text">
+              To be the definitive choice for premium builders in Trichy, globally recognized for our ethical practices, architectural precision, and commitment to sustainable future developments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Section -->
+  <section class="core-values">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <div class="section-badge">OUR PRINCIPLES</div>
+        <h2 class="section-title">What Drives <span class="text-gold">Thulasi Engineers</span></h2>
+      </div>
+
+      <div class="values-grid">
+        <div class="value-item reveal-up" style="transition-delay: 0.1s;">
+          <div class="v-num">01</div>
+          <div class="v-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 15l-2 5 2-1 2 1-2-5z"/><circle cx="12" cy="9" r="7"/><path d="M12 5l1 2h2l-1.5 1.5.5 2.5-2-1.5-2 1.5.5-2.5-1.5-1.5h2z"/></svg>
+          </div>
+          <h4>Quality First</h4>
+          <p>We never compromise on materials. From the foundation steel to the roof concrete, we utilize exclusively premium-grade resources.</p>
+          <div class="v-line"></div>
+        </div>
+        
+        <div class="value-item reveal-up" style="transition-delay: 0.2s;">
+          <div class="v-num">02</div>
+          <div class="v-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </div>
+          <h4>Absolute Transparency</h4>
+          <p>Zero hidden costs. We provide deeply detailed project estimations and maintain clear communication at every construction phase.</p>
+          <div class="v-line"></div>
+        </div>
+        
+        <div class="value-item reveal-up" style="transition-delay: 0.3s;">
+          <div class="v-num">03</div>
+          <div class="v-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h4>Safety & Compliance</h4>
+          <p>Every building we engineer is 100% compliant with national structural safety norms and local municipal regulations.</p>
+          <div class="v-line"></div>
+        </div>
+        
+        <div class="value-item reveal-up" style="transition-delay: 0.4s;">
+          <div class="v-num">04</div>
+          <div class="v-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h4>Client Devotion</h4>
+          <p>Our end goal is to far exceed initial expectations. We focus on building lifelong relationships, not just concrete structures.</p>
+          <div class="v-line"></div>
+        </div>
+
+        <div class="value-item reveal-up" style="transition-delay: 0.5s;">
+          <div class="v-num">05</div>
+          <div class="v-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>
+          </div>
+          <h4>Project Management (PMC)</h4>
+          <p>Expert consultancy ensuring timely execution, cost efficiency, BOQ preparation, and 100% quality compliance throughout the project lifecycle.</p>
+          <div class="v-line"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <StatsBar />
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* CSS Variables */
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+    --text-dark: #0d1b3e;
+    --text-muted: #4b5563;
+    --text-light: #6b7280;
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --border-light: rgba(13, 27, 62, 0.08);
+  }
+
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy); 
+    overflow: visible; /* Allow wave to overlap next section */
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px; /* Slight overlap to kill the line */
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px); /* Further ensure gap is covered */
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .page-banner__content {
+    max-width: 800px;
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--gold);
+  }
+
+  /* About Intro Section */
+  .about-intro {
+    padding: 100px 0;
+    background: var(--bg-white);
+    border: none !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .content-body p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .content-body strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+
+  .trust-badges {
+    display: flex;
+    gap: 16px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .badge-item {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 8px;
+    background: rgba(197, 160, 89, 0.05);
+    border: 1px solid var(--border-light);
+    transition: all 0.3s ease;
+  }
+
+  .badge-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--gold);
+    background: rgba(197, 160, 89, 0.1);
+  }
+
+  .badge-item svg {
+    width: 22px;
+    height: 22px;
+    color: var(--gold);
+  }
+
+  .badge-item span {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* About Image */
+  .about-image-wrapper {
+    position: relative;
+    padding-right: 20px;
+    padding-bottom: 20px;
+  }
+
+  .about-image {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    transition: filter 0.5s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  }
+
+  .image-accent-border {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 90%;
+    height: 90%;
+    border: 1.5px solid var(--gold);
+    border-radius: 12px;
+    z-index: 1;
+    opacity: 0.5;
+    transform: translate(20px, 20px);
+    transition: transform 0.5s ease;
+  }
+
+  .about-image-wrapper:hover .image-accent-border {
+    transform: translate(10px, 10px);
+  }
+
+  .exp-box {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    padding: 20px 28px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    z-index: 10;
+    background: var(--bg-white);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--gold);
+  }
+
+  .exp-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .exp-num .plus {
+    color: var(--gold);
+  }
+
+  .exp-text {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+  }
+
+  /* Mission & Vision Section */
+  .mission-vision {
+    padding: 100px 0;
+    background: var(--bg-light);
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    max-width: 650px;
+  }
+
+  .mv-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .mv-card {
+    position: relative;
+    padding: 50px 40px;
+    border-radius: 16px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  }
+
+  .mv-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(197, 160, 89, 0.3);
+    box-shadow: 0 20px 35px rgba(13, 27, 62, 0.08);
+  }
+
+  .mv-card__glow {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(197, 160, 89, 0.08) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .mv-card:hover .mv-card__glow {
+    opacity: 1;
+  }
+
+  .mv-card__content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .mv-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(197, 160, 89, 0.1);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    color: var(--gold);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    transition: all 0.4s ease;
+  }
+
+  .mv-card:hover .mv-icon {
+    background: var(--gold);
+    color: var(--navy);
+    transform: scale(1.05);
+  }
+
+  .mv-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .mv-card__title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+
+  .mv-card__text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  /* Core Values Section */
+  .core-values {
+    padding: 100px 0;
+    background: var(--bg-white);
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 25px;
+    margin-top: 60px;
+  }
+
+  .value-item {
+    position: relative;
+    padding: 35px 24px;
+    border-radius: 16px;
+    background: var(--bg-white);
+    border: 1px solid var(--border-light);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  }
+
+  .value-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(197, 160, 89, 0.3);
+    box-shadow: 0 20px 35px rgba(13, 27, 62, 0.08);
+  }
+
+  .v-num {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 3rem;
+    font-weight: 900;
+    color: rgba(13, 27, 62, 0.03);
+    z-index: 0;
+    transition: all 0.3s ease;
+  }
+
+  .value-item:hover .v-num {
+    color: rgba(197, 160, 89, 0.08);
+  }
+
+  .v-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--gold);
+    margin: 0 auto 20px auto;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+
+  .value-item:hover .v-icon {
+    transform: scale(1.1);
+  }
+
+  .v-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .value-item h4 {
+    position: relative;
+    z-index: 2;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .value-item p {
+    position: relative;
+    z-index: 2;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .v-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .value-item:hover .v-line {
+    width: 100%;
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 40px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+
+    .about-image-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      order: -1;
+    }
+
+    .exp-box {
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      width: max-content;
+      bottom: -20px;
+    }
+
+    .mv-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .values-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .about-intro,
+    .mission-vision,
+    .core-values {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .page-banner {
+      min-height: 40vh;
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+
+    .page-banner__title {
+      font-size: 2rem;
+    }
+
+    .trust-badges {
+      flex-direction: column;
+    }
+
+    .badge-item {
+      justify-content: center;
+    }
+
+    .mv-card {
+      padding: 35px 25px;
+    }
+
+    .mv-card__title {
+      font-size: 1.5rem;
+    }
+
+    .value-item {
+      padding: 25px 20px;
+    }
+
+    .exp-box {
+      padding: 12px 20px;
+      gap: 12px;
+      bottom: -15px;
+    }
+
+    .exp-num {
+      font-size: 1.8rem;
+    }
+
+    .exp-text {
+      font-size: 0.65rem;
+      letter-spacing: 0.05em;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+
+    .section-title {
+      font-size: 3.5rem;
+    }
+  }
+</style>

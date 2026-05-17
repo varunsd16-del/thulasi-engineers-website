@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://thulasiengineer.in/sitemap_pages.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://thulasiengineer.in/sitemap_locations.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://thulasiengineer.in/sitemap_projects.xml</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://thulasiengineer.in/sitemap_blogs.xml</loc>
+  </sitemap>
+</sitemapindex>

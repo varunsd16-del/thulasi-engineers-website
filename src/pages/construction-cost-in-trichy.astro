@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../layouts/engineering-authority-layout.astro';
+import ContactMini from '../components/features/contact/ContactMini.astro';
+import CostCalculator from '../components/features/services/CostCalculator.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+
+const title = `Construction Cost Per Sq Ft in Trichy (2024) | House Building Price | ${SITE_METADATA.name}`;
+const description = SITE_METADATA.description;
+const keywords = "construction cost in trichy, house building price per sq ft trichy, material cost trichy, construction labor rate trichy";
+
+const costBreakdown = [
+  { item: "Standard Construction", price: "₹1,850 - ₹1,950", details: "Quality materials, standard fittings, basic elevation." },
+  { item: "Premium Construction", price: "₹2,050 - ₹2,250", details: "Branded materials, teak wood, modular kitchen, designer elevation." },
+  { item: "Luxury Construction", price: "₹2,350 - ₹2,600+", details: "Imported marble, smart home systems, luxury fittings, architectural elevation." }
+];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/ongoing-residential-villa-construction-trichy.webp" alt="Construction Cost in Trichy" class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="section-badge">PRICING TRANSPARENCY</div>
+      <h1 class="page-banner__title">House Construction <span class="text-gold">Cost in Trichy</span></h1>
+      <p class="page-banner__subtitle">Transparency in Pricing. Excellence in Engineering for 2024.</p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Construction Cost</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="cost-content">
+    <div class="container">
+      <div class="cost-grid">
+        <div class="cost-main">
+          <h2>Transparent Construction Pricing for 2024</h2>
+          <p>Understanding the <strong>construction cost in Trichy</strong> is the first step toward building your dream home. At Thulasi Engineers, we believe in 100% transparency. Our rates are based on current market prices for <strong>cement, steel, and labor in Tiruchirappalli</strong>.</p>
+          
+          <div class="price-table-wrapper">
+            <table class="price-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Price Range</th>
+                  <th>Specifications</th>
+                </tr>
+              </thead>
+              <tbody>
+                {costBreakdown.map(item => (
+                  <tr>
+                    <td><strong>{item.item}</strong></td>
+                    <td class="price-col">{item.price}<span>/sq.ft</span></td>
+                    <td>{item.details}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Factors Affecting Construction Cost in Trichy</h3>
+          <p>Several local factors influence the final price of building in the Trichy region:</p>
+          <ul>
+            <li><strong>Soil Conditions:</strong> Building near the Cauvery riverbed (Srirangam) may require deeper foundations compared to rocky areas.</li>
+            <li><strong>Material Logistics:</strong> Proximity to major transport hubs like No.1 Tollgate or Central Bus Stand affects transportation costs.</li>
+            <li><strong>Local Approvals:</strong> Charges for <strong>Trichy Corporation</strong> or <strong>DTCP</strong> approvals vary by plot size and location.</li>
+          </ul>
+
+          <div class="ai-snippet">
+            <h4>Quick Answer: How much does a 1500 sq.ft. house cost in Trichy?</h4>
+            <p>For a 1500 sq.ft. independent house in Trichy, the estimated cost ranges from <strong>₹27.75 Lakhs to ₹34.5 Lakhs</strong> for a premium quality build. This includes civil works, electrical, plumbing, and basic finishing.</p>
+          </div>
+        </div>
+
+        <aside class="cost-sidebar">
+          <div class="sidebar-box sticky-top">
+            <h4>Instant Estimator</h4>
+            <p>Use our interactive tool to get a ballpark figure for your project.</p>
+            <a href="#calculator" class="btn btn--red w-full">CALCULATE NOW</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Calculator Integration -->
+  <CostCalculator />
+
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .page-banner__title span {
+    color: var(--gold);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--gold);
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .cost-content { padding: 100px 0; }
+  .cost-grid { display: grid; grid-template-columns: 8fr 4fr; gap: 60px; }
+
+  .price-table-wrapper { margin: 40px 0; overflow-x: auto; }
+  .price-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #eee; border-radius: 15px; overflow: hidden; }
+  .price-table th { background: var(--navy); color: #fff; text-align: left; padding: 20px; font-family: var(--font-head); }
+  .price-table td { padding: 20px; border-bottom: 1px solid #eee; font-size: 0.95rem; }
+  .price-col { font-weight: 800; color: var(--gold); font-size: 1.1rem; }
+  .price-col span { font-size: 0.75rem; color: #999; }
+
+  .ai-snippet { background: var(--bg-light); padding: 40px; border-radius: 20px; border-left: 6px solid var(--gold); margin-top: 50px; }
+  .ai-snippet h4 { font-family: var(--font-head); color: var(--navy); margin-bottom: 15px; }
+
+  .sticky-top { position: sticky; top: 120px; }
+
+  @media (max-width: 1024px) {
+    .cost-grid { grid-template-columns: 1fr; }
+    .page-banner { 
+      min-height: 40vh; 
+      padding-top: 120px; 
+      padding-bottom: 80px; 
+    }
+  }
+</style>

@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../layouts/engineering-authority-layout.astro';
+import ContactMini from '../components/features/contact/ContactMini.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+
+const title = `Construction Knowledge Base Trichy | ${SITE_METADATA.name}`;
+const description = SITE_METADATA.description;
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/civil-engineers-site-inspection-quality-check-trichy.webp" alt="Construction Knowledge Base" class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="section-badge">LEARNING CENTER</div>
+      <h1 class="page-banner__title">Construction <span class="text-gold">Knowledge Base</span></h1>
+      <p class="page-banner__subtitle">Understanding the building ecosystem in Tiruchirappalli.</p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Knowledge Base</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="knowledge-grid">
+    <div class="container">
+      <div class="glossary-section">
+        <h2>Key Construction Entities in Trichy</h2>
+        <div class="entity-list">
+          <div class="entity-item">
+            <h3>Trichy Corporation</h3>
+            <p>The <strong>Tiruchirappalli City Municipal Corporation</strong> is the primary local body responsible for building plan approvals and property tax assessments within city limits (Thillai Nagar, Cantonment, Woraiyur, etc.).</p>
+          </div>
+          <div class="entity-item">
+            <h3>DTCP Trichy</h3>
+            <p>The <strong>Directorate of Town and Country Planning (DTCP)</strong> manages land use and layouts for areas outside the immediate city corporation, such as Samayapuram and Lalgudi.</p>
+          </div>
+          <div class="entity-item">
+            <h3>TANGEDCO Trichy</h3>
+            <p>Responsible for temporary and permanent power connections for all construction sites in the Trichy region.</p>
+          </div>
+        </div>
+
+        <h2>Essential Terms for Homeowners</h2>
+        <div class="glossary-grid">
+          <div class="glossary-card">
+            <h4>Patta & Chitta</h4>
+            <p>Legal documents proving land ownership in Tamil Nadu. A clear Patta is mandatory for any construction approval.</p>
+          </div>
+          <div class="glossary-card">
+            <h4>FSI (Floor Space Index)</h4>
+            <p>The ratio of total built-up area to the plot area. In Trichy, residential FSI usually ranges from 1.5 to 2.0.</p>
+          </div>
+          <div class="glossary-card">
+            <h4>Plinth Area</h4>
+            <p>The total area of the building including the thickness of walls. It is different from carpet area.</p>
+          </div>
+          <div class="glossary-card">
+            <h4>Structural Stability Certificate</h4>
+            <p>A document issued by a <strong>Registered Structural Engineer</strong> (like Thulasi Engineers) certifying that the building is safe to occupy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--gold);
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .knowledge-grid { padding: 100px 0; }
+  .glossary-section h2 { font-family: var(--font-head); font-size: 2rem; margin-top: 60px; margin-bottom: 30px; color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+  
+  .entity-list { display: grid; gap: 30px; margin-bottom: 60px; }
+  .entity-item { background: #f8f9fa; padding: 40px; border-radius: 20px; }
+  .entity-item h3 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 15px; color: var(--gold); }
+  .entity-item p { font-size: 1.1rem; line-height: 1.7; color: var(--text-muted); }
+
+  .glossary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+  .glossary-card { border: 1px solid var(--border-light); padding: 30px; border-radius: 15px; transition: background 0.3s; }
+  .glossary-card:hover { background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--gold); }
+  .glossary-card h4 { font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 12px; color: var(--navy); }
+  .glossary-card p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
+
+  @media (max-width: 768px) {
+    .page-banner {
+      min-height: 40vh;
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+  }
+</style>

@@ -1,0 +1,203 @@
+---
+import ServiceDetailLayout from '../../layouts/turnkey-service-detail-layout.astro';
+
+const service = {
+  title: 'Industrial Construction & PEB Builders in Trichy | BHEL & Thuvakudi Experts',
+  shortTitle: 'Industrial Construction',
+  image: '/images/services/factory-warehouse-peb-shed-builders-trichy.webp',
+  description: 'Expert industrial construction services in Trichy for factories, warehouses, and industrial sheds in the BHEL, Thuvakudi, and Tiruverumbur belts.',
+  features: ['PEB Structural Expertise', 'Heavy-Duty Industrial Flooring', 'Fire Safety & Electrical Compliance', 'Industrial Shed Design', 'Project Handover within Deadlines'],
+  faqs: [
+    { q: 'Do you build industrial sheds in Thuvakudi?', a: 'Yes, we have extensive experience building industrial sheds and PEB structures in the Thuvakudi and BHEL industrial zones.' },
+    { q: 'Can you handle large-span warehouse projects?', a: 'Absolutely. We use advanced PEB technology to create large-span structures without internal columns, maximizing storage space.' }
+  ]
+};
+
+const industrialTypes = [
+  { title: 'Factory Construction', image: '/images/services/pre-engineered-building-peb-industrial-shed-trichy.webp', desc: 'Heavy-duty manufacturing units built with high-performance flooring and structural precision.' },
+  { title: 'Warehouse Facilities', image: '/images/services/large-span-logistics-warehouse-builders-trichy.webp', desc: 'Large-span storage solutions optimized for logistics and material handling.' },
+  { title: 'Industrial Sheds', image: '/images/services/heavy-manufacturing-peb-industrial-sheds-trichy.webp', desc: 'Versatile PEB and RCC sheds for small to medium scale industrial units.' },
+  { title: 'Machine Foundations', image: '/images/services/zero-vibration-heavy-machine-foundations-engineering-trichy.webp', desc: 'Specialized zero-vibration foundations for heavy industrial machinery.' },
+  { title: 'Infrastructure for SIDCO', image: '/images/services/sidco-industrial-estate-infrastructure-development-trichy.webp', desc: 'Custom construction solutions for industrial units in SIDCO and BHEL zones.' }
+];
+---
+
+<ServiceDetailLayout service={service}>
+  <div class="content-wrapper">
+    <div class="section-intro">
+      <h2>Heavy-Duty Industrial Construction</h2>
+      <p>Trichy is an industrial powerhouse, and Thulasi Engineers is at the forefront of its growth. We provide specialized <strong>industrial construction in Trichy</strong>, catering to the heavy engineering and manufacturing sectors in <strong>BHEL</strong> and the <strong>Thuvakudi Industrial Estate</strong>.</p>
+    </div>
+    
+    <div class="portfolio-section">
+      <div class="section-header">
+        <div class="section-label">OUR EXPERTISE</div>
+        <h3>Our Industrial Solutions</h3>
+        <p>We deliver high-performance industrial structures designed for operational excellence:</p>
+      </div>
+
+      <div class="construction-grid">
+        {industrialTypes.map((type, index) => (
+          <div class="construction-card" style={`animation-delay: ${0.1 * index}s`}>
+            <div class="card-image">
+              <img src={type.image} alt={type.title} loading="lazy" />
+              <div class="card-overlay">
+                <span class="card-tag">INDUSTRIAL</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h4>{type.title}</h4>
+              <p>{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="section-why">
+      <h3>Specialized Factory & Warehouse Building</h3>
+      <p>Our engineering team specializes in Pre-Engineered Buildings (PEB), reinforced concrete factory sheds, and large-scale industrial warehouses. We understand the specific load requirements for heavy machinery and ensure zero-vibration floorings for manufacturing units in <strong>Tiruverumbur</strong>.</p>
+    </div>
+    
+    <div class="section-quality">
+      <h3>Industrial Compliance & Safety</h3>
+      <p>We strictly adhere to industrial building codes, fire safety regulations, and pollution control board norms. Whether it is a small-scale unit in <strong>SIDCO</strong> or a massive production plant, our engineering precision ensures operational efficiency.</p>
+    </div>
+  </div>
+</ServiceDetailLayout>
+
+<style>
+  /* Override layout styles for white background aesthetic */
+  :global(.service-details) {
+    background: #ffffff !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  :global(.details-text) {
+    color: #333;
+  }
+
+  :global(.details-text h2, .details-text h3, .details-text h4) {
+    color: #111 !important;
+  }
+
+  :global(.details-sidebar .sidebar-card) {
+    border: 1px solid #eee;
+    background: #fafafa;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h3 {
+    margin-top: 0 !important;
+    font-size: 2.2rem !important;
+    margin-bottom: 15px;
+  }
+
+  /* Construction Grid */
+  .construction-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .construction-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #d1d5db;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .construction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: #9ca3af;
+  }
+
+  .card-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .construction-card:hover .card-image img {
+    transform: scale(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .card-tag {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    color: #111;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .construction-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .card-image {
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-header h3 {
+      font-size: 1.8rem !important;
+    }
+  }
+</style>

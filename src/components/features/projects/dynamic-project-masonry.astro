@@ -1,0 +1,356 @@
+---
+// ProjectShowcase.astro - Dynamic Infinite Auto-Scrolling Gallery
+const allImages = [
+  "/images/localities/ongoing-residential-villa-construction-trichy.webp", "/images/localities/structural-concrete-framing-work-trichy.webp", "/images/localities/commercial-hub-structural-column-casting-trichy.webp",
+  "/images/localities/brickwork-plastering-villa-construction-trichy.webp", "/images/localities/civil-engineers-site-inspection-quality-check-trichy.webp", "/images/localities/independent-villa-elevation-design-srirangam.webp",
+  "/images/localities/heavy-peb-industrial-shed-framing-thuvakudi.webp", "/images/localities/stormwater-drain-civil-infrastructure-trichy.webp", "/images/localities/structural-renovation-plastering-old-home-trichy.webp",
+  "/images/localities/vastu-compliant-architectural-drafting-office-trichy.webp", "/images/localities/site-supervision-timeline-management-trichy.webp", "/images/localities/site-safety-officer-construction-briefing-trichy.webp",
+  "/images/localities/green-building-aac-block-masonry-trichy.webp", "/images/localities/luxury-villa-structural-foundation-casting-srirangam.webp", "/images/localities/ongoing-commercial-retail-complex-cantonment.webp",
+  "/images/localities/residential-house-structural-columns-woraiyur.webp", "/images/localities/industrial-peb-warehouse-foundation-thuvakudi.webp", "/images/localities/civil-infrastructure-road-subbase-grading-trichy.webp",
+  "/images/localities/home-renovation-damp-proofing-treatment-puthur.webp", "/images/localities/architectural-plans-approval-verification-trichy.webp", "/images/localities/project-management-procurement-cost-tracking-trichy.webp",
+  "/images/localities/construction-site-ppe-compliance-safety-check-trichy.webp", "/images/localities/eco-friendly-fly-ash-brick-construction-trichy.webp", "/images/localities/luxury-villa-facade-elevation-design-srirangam.webp",
+  "/images/localities/commercial-complex-interior-layout-planning-trichy.webp", "/images/localities/residential-villa-brickwork-ongoing-kk-nagar.webp", "/images/localities/industrial-peb-shed-portal-frames-erection-trichy.webp",
+  "/images/localities/urban-roads-asphalt-laying-machinery-trichy.webp", "/images/localities/luxury-residence-elevation-thulasi-engineers.webp", "/images/localities/modern-independent-villa-construction-srirangam.webp"
+];
+
+// Split images into two rows for dynamic effect
+const row1 = allImages.slice(0, 15);
+const row2 = allImages.slice(15);
+---
+
+<section class="showcase-section reveal-up">
+  <div class="container">
+    <div class="section-header text-center reveal-up">
+      <div class="section-badge">PROJECT SHOWCASE</div>
+      <h2 class="section-title">Architectural <span class="text-gold">Excellence</span></h2>
+      <div class="heading-accent-line center-line"></div>
+      <p class="section-desc center-desc">Experience our complete portfolio of construction mastery through this dynamic visual journey.</p>
+    </div>
+  </div>
+
+  <!-- Infinite Marquee Row 1 (Left to Right) -->
+  <div class="marquee marquee--left">
+    <div class="marquee__group">
+      {row1.map((src, index) => (
+        <div class="marquee__item" key={`row1-${index}`}>
+          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <div class="marquee__overlay">
+            <span class="view-tag">VIEW PROJECT</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee__group" aria-hidden="true">
+      {row1.map((src, index) => (
+        <div class="marquee__item" key={`row1-duplicate-${index}`}>
+          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <div class="marquee__overlay">
+            <span class="view-tag">VIEW PROJECT</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Infinite Marquee Row 2 (Right to Left) -->
+  <div class="marquee marquee--right">
+    <div class="marquee__group">
+      {row2.map((src, index) => (
+        <div class="marquee__item" key={`row2-${index}`}>
+          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <div class="marquee__overlay">
+            <span class="view-tag">VIEW PROJECT</span>
+          </div>
+        </div>
+      ))}
+    </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="marquee__group" aria-hidden="true">
+      {row2.map((src, index) => (
+        <div class="marquee__item" key={`row2-duplicate-${index}`}>
+          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <div class="marquee__overlay">
+            <span class="view-tag">VIEW PROJECT</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+  }
+
+  .showcase-section {
+    padding: 70px 0;
+    overflow: hidden;
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .heading-accent-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto 25px auto;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: #4b5563;
+    line-height: 1.7;
+    max-width: 650px;
+  }
+
+  .center-desc {
+    margin: 0 auto;
+  }
+
+  .text-center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Marquee Core Logic */
+  .marquee {
+    display: flex;
+    user-select: none;
+    gap: 20px;
+    margin-bottom: 20px;
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 5%,
+      black 95%,
+      transparent
+    );
+  }
+
+  .marquee__group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
+    min-width: 100%;
+    animation: scroll-left 50s linear infinite;
+  }
+
+  .marquee--right .marquee__group {
+    animation: scroll-right 50s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - 20px)); }
+  }
+
+  @keyframes scroll-right {
+    from { transform: translateX(calc(-100% - 20px)); }
+    to { transform: translateX(0); }
+  }
+
+  /* Pause on hover for better UX */
+  .marquee:hover .marquee__group {
+    animation-play-state: paused;
+  }
+
+  .marquee__item {
+    position: relative;
+    width: 380px;
+    height: 280px;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #e5e7eb;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .marquee__item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 20px 40px rgba(13, 27, 62, 0.15);
+    z-index: 10;
+  }
+
+  .marquee__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .marquee__item:hover img {
+    transform: scale(1.08);
+  }
+
+  .marquee__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13, 27, 62, 0.7) 0%, rgba(13, 27, 62, 0.2) 50%, transparent 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .marquee__item:hover .marquee__overlay {
+    opacity: 1;
+  }
+
+  .view-tag {
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    padding: 8px 20px;
+    border: 1.5px solid var(--gold);
+    border-radius: 40px;
+    backdrop-filter: blur(8px);
+    background: rgba(197, 160, 89, 0.15);
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .marquee__item:hover .view-tag {
+    background: var(--gold);
+    color: var(--navy);
+    border-color: var(--gold);
+    transform: translateY(-5px);
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 40px;
+    }
+
+    .marquee__item {
+      width: 320px;
+      height: 240px;
+    }
+
+    .marquee__group {
+      animation-duration: 40s;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .showcase-section {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .marquee__item {
+      width: 280px;
+      height: 200px;
+    }
+
+    .marquee__group {
+      gap: 15px;
+      animation-duration: 35s;
+    }
+
+    .marquee {
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .marquee__item {
+      width: 260px;
+      height: 180px;
+    }
+
+    .view-tag {
+      font-size: 0.6rem;
+      padding: 6px 16px;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+
+    .marquee__item {
+      width: 420px;
+      height: 300px;
+    }
+  }
+</style>

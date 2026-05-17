@@ -1,0 +1,149 @@
+---
+// StatsBar.astro - Statistics Bar with Dark Background
+---
+
+<div class="stats-bar reveal-up">
+  <div class="stats-bar__inner">
+    <div class="stat-item">
+      <div class="stat-item__icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="6" y="18" width="36" height="26" rx="1"/>
+          <path d="M12 18V12a12 12 0 0 1 24 0v6"/>
+        </svg>
+      </div>
+      <div>
+        <div class="stat-item__num">30+</div>
+        <div class="stat-item__label">PROJECTS COMPLETED</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="18" cy="14" r="6"/>
+          <circle cx="30" cy="14" r="6"/>
+          <path d="M6 40c0-8 5-14 12-14"/>
+          <path d="M30 26c7 0 12 6 12 14"/>
+        </svg>
+      </div>
+      <div>
+        <div class="stat-item__num">200+</div>
+        <div class="stat-item__label">HAPPY CLIENTS</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M24 4v8M24 36v8M10 10l6 6M32 32l6 6M4 24h8M36 24h8"/>
+        </svg>
+      </div>
+      <div>
+        <div class="stat-item__num">10+</div>
+        <div class="stat-item__label">YEARS OF EXPERIENCE</div>
+      </div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__icon">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="8" y="6" width="32" height="36" rx="1"/>
+          <path d="M16 14h16M16 20h16M16 26h10"/>
+        </svg>
+      </div>
+      <div>
+        <div class="stat-item__num">1.5M+</div>
+        <div class="stat-item__label">SQ.FT. BUILT AREA</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .stats-bar {
+    background: #0d1b3e;
+    padding: 20px 0;
+    border-top: 1px solid rgba(197, 160, 89, 0.15);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  }
+
+  .stats-bar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+  }
+
+  .stat-item__icon {
+    width: 50px;
+    height: 50px;
+    color: #c5a059;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stat-item__icon svg {
+    width: 36px;
+    height: 36px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .stat-item__num {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1;
+  }
+
+  .stat-item__label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .stats-bar__inner {
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      flex: 0 0 calc(50% - 15px);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .stats-bar {
+      padding: 40px 0;
+    }
+    
+    .stat-item {
+      flex: 0 0 100%;
+      justify-content: center;
+    }
+  }
+</style>

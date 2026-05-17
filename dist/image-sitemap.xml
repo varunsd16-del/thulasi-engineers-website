@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <!-- 1. Home Page Authority Cluster -->
+  <url>
+    <loc>https://thulasiengineers.com/</loc>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/hero/thulasi-engineers-construction-company-trichy.webp</image:loc>
+      <image:title>Thulasi Engineers and Contractors - Construction Company in Trichy</image:title>
+      <image:caption>Premium building construction, PMC, structural engineering, and 3D architectural plan visual rendering in Trichy.</image:caption>
+      <image:geo_location>Tiruchirappalli, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/hero/premium-residential-builders-trichy.webp</image:loc>
+      <image:title>Premium Residential Villa Construction in Trichy</image:title>
+      <image:caption>Luxury residential independent house building construction in Tiruchirappalli.</image:caption>
+      <image:geo_location>Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/hero/modern-architectural-elevation-trichy.webp</image:loc>
+      <image:title>Modern 3D House Elevation Rendering in Trichy</image:title>
+      <image:caption>Premium modern structural building facade and elevation design by Thulasi Architects.</image:caption>
+      <image:geo_location>Thillai Nagar, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- 2. Services Page - Building Construction -->
+  <url>
+    <loc>https://thulasiengineers.com/services/building-construction/</loc>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/residential-commercial-building-construction-trichy.webp</image:loc>
+      <image:title>Turnkey Residential and Commercial Building Construction in Trichy</image:title>
+      <image:caption>Comprehensive turnkey concrete building structural framework casting and finishing by Thulasi Engineers.</image:caption>
+      <image:geo_location>KK Nagar, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/luxury-residential-villa-builders-srirangam.webp</image:loc>
+      <image:title>Luxury Residential Villa Builders in Srirangam</image:title>
+      <image:caption>Custom architectural floor plan construction and premium structural framing for a luxury villa in Srirangam.</image:caption>
+      <image:geo_location>Srirangam, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- 3. Services Page - Architecture & Planning -->
+  <url>
+    <loc>https://thulasiengineers.com/services/architecture-planning/</loc>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/3d-architectural-planning-dtcp-approvals-trichy.webp</image:loc>
+      <image:title>3D Architectural Planning and DTCP Approvals in Trichy</image:title>
+      <image:caption>Vastu-compliant 2D blueprint drafting and professional 3D facade modeling in Tiruchirappalli.</image:caption>
+      <image:geo_location>Cantonment, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/custom-3d-elevation-designs-trichy.webp</image:loc>
+      <image:title>Custom 3D Elevation Designs in Trichy</image:title>
+      <image:caption>Ultra-realistic architectural elevations and site layouts drafted by registered structural engineers.</image:caption>
+      <image:geo_location>Tiruverumbur, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- 4. Services Page - PMC Project Management -->
+  <url>
+    <loc>https://thulasiengineers.com/services/project-management/</loc>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/pmc-project-management-consultants-trichy.webp</image:loc>
+      <image:title>PMC Project Management Consultants in Trichy</image:title>
+      <image:caption>Independent engineering supervision, construction material testing, and strict cost controls in Trichy.</image:caption>
+      <image:geo_location>Samayapuram, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/bill-of-quantities-boq-technical-documentation-trichy.webp</image:loc>
+      <image:title>Bill of Quantities (BOQ) and Technical Documentation in Trichy</image:title>
+      <image:caption>Accurate building estimate spreadsheets and procurement plans for commercial layouts.</image:caption>
+      <image:geo_location>Lalgudi, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- 5. Services Page - Industrial Construction -->
+  <url>
+    <loc>https://thulasiengineers.com/services/industrial-construction/</loc>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/factory-warehouse-peb-shed-builders-trichy.webp</image:loc>
+      <image:title>Factory and Warehouse PEB Shed Builders in Trichy</image:title>
+      <image:caption>Pre-Engineered Building (PEB) structural steel framing erection at SIDCO Industrial Estate in Trichy.</image:caption>
+      <image:geo_location>Thuvakudi, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/services/zero-vibration-heavy-machine-foundations-engineering-trichy.webp</image:loc>
+      <image:title>Zero-Vibration Heavy Machine Foundations Engineering in Trichy</image:title>
+      <image:caption>Custom RCC machine base foundations designed for heavy textile and forging machinery.</image:caption>
+      <image:geo_location>Golden Rock, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+  </url>
+
+  <!-- 6. Projects Gallery Cluster -->
+  <url>
+    <loc>https://thulasiengineers.com/projects/</loc>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/projects/luxury-villa-construction-srirangam.webp</image:loc>
+      <image:title>Completed Luxury Villa Construction in Srirangam</image:title>
+      <image:caption>Architect-designed modern premium residential independent villa build in Srirangam.</image:caption>
+      <image:geo_location>Srirangam, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/projects/modern-commercial-complex-thillai-nagar.webp</image:loc>
+      <image:title>Completed Modern Commercial Retail Complex in Thillai Nagar</image:title>
+      <image:caption>Multi-storey corporate commercial workspace construction by Thulasi Engineers in Thillai Nagar.</image:caption>
+      <image:geo_location>Thillai Nagar, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+    <image:image>
+      <image:loc>https://thulasiengineers.com/images/projects/turnkey-residential-construction-kk-nagar.webp</image:loc>
+      <image:title>Completed Turnkey Residential Construction in KK Nagar</image:title>
+      <image:caption>Vastu-compliant premium independent residence building completed in KK Nagar, Trichy.</image:caption>
+      <image:geo_location>KK Nagar, Trichy, Tamil Nadu, India</image:geo_location>
+    </image:image>
+  </url>
+
+</urlset>

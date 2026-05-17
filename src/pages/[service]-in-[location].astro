@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../layouts/engineering-authority-layout.astro';
+import ContactMini from '../components/features/contact/ContactMini.astro';
+import FAQSection from '../components/features/seo/civil-engineering-faqs.astro';
+import AreasServed from '../components/features/seo/trichy-locality-showcase.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+
+export async function getStaticPaths() {
+  const locations = [
+    { name: 'Srirangam', slug: 'srirangam', landmark: 'Ranganathaswamy Temple' },
+    { name: 'Thillai Nagar', slug: 'thillai-nagar', landmark: 'Makkal Mandram' },
+    { name: 'KK Nagar', slug: 'kk-nagar', landmark: 'Ordnance Factory' },
+    { name: 'Woraiyur', slug: 'woraiyur', landmark: 'Vekkali Amman Temple' },
+    { name: 'Cantonment', slug: 'cantonment', landmark: 'Trichy Central Bus Stand' },
+    { name: 'Karumandapam', slug: 'karumandapam', landmark: 'National College' },
+    { name: 'Puthur', slug: 'puthur', landmark: 'Bishop Heber College' },
+    { name: 'Tiruverumbur', slug: 'tiruverumbur', landmark: 'BHEL' },
+    { name: 'Samayapuram', slug: 'samayapuram', landmark: 'Samayapuram Mariamman Temple' },
+    { name: 'Golden Rock', slug: 'golden-rock', landmark: 'Railway Colony' },
+    { name: 'Lalgudi', slug: 'lalgudi', landmark: 'Lalgudi Railway Station' },
+    { name: 'Manapparai', slug: 'manapparai', landmark: 'Cattle Market' },
+    { name: 'Thuvakudi', slug: 'thuvakudi', landmark: 'NIT Trichy' }
+  ];
+
+  const services = [
+    { name: 'Construction Company', slug: 'construction-company' },
+    { name: 'Best Builders', slug: 'builders' },
+    { name: 'Civil Engineers', slug: 'civil-engineers' },
+    { name: 'Home Renovation', slug: 'home-renovation' }
+  ];
+
+  return services.flatMap((service) => 
+    locations.map((loc) => ({
+      params: { service: service.slug, location: loc.slug },
+      props: { 
+        locationName: loc.name, 
+        serviceName: service.name, 
+        landmark: loc.landmark,
+        fullTitle: `${service.name} in ${loc.name} | ${SITE_METADATA.name}`,
+        fullDesc: `Looking for ${service.name} in ${loc.name}? ${SITE_METADATA.name} offers premium ${service.name.toLowerCase()} services near ${loc.landmark} and surrounding areas. Registered civil engineers in Trichy.`
+      }
+    }))
+  );
+}
+
+const { locationName, serviceName, landmark, fullTitle, fullDesc } = Astro.props;
+
+const localFaqs = [
+  {
+    question: `What is the cost of ${serviceName.toLowerCase()} in ${locationName}?`,
+    answer: `The average cost for ${serviceName.toLowerCase()} in ${locationName} ranges from ₹1,800 to ₹2,500 per sq.ft. for residential projects, depending on material selection and structural requirements.`
+  },
+  {
+    question: `How long does it take for a project near ${landmark}?`,
+    answer: `For a standard independent house in ${locationName}, it typically takes 10-12 months. Large commercial or luxury villa projects may take up to 18 months.`
+  },
+  {
+    question: `Do you handle building approvals in ${locationName}?`,
+    answer: `Yes, as registered civil engineers in Trichy, we handle the entire process of DTCP and Trichy Corporation plan approvals for all projects in ${locationName}.`
+  }
+];
+---
+
+<BaseLayout title={fullTitle} description={fullDesc}>
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/ongoing-residential-villa-construction-trichy.webp" alt={`${serviceName} in ${locationName}`} class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="section-badge">LOCAL AUTHORITY</div>
+      <h1 class="page-banner__title">{serviceName} in <span class="text-gold">{locationName}</span></h1>
+      <p class="page-banner__subtitle">Trusted Engineering & Construction Services near {landmark}, {locationName}.</p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <span class="current">{serviceName} {locationName}</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <section class="local-content">
+    <div class="container">
+      <div class="local-grid">
+        <div class="local-main">
+          <h2>Premium {serviceName} Services for {locationName} Residents</h2>
+          <p>
+            Thulasi Engineers & Contractors is proud to offer specialized <strong>{serviceName} in {locationName}</strong>. With a deep understanding of the local landscape and building regulations in the <strong>{locationName}</strong> area, we deliver structures that combine traditional values with modern engineering.
+          </p>
+          
+          <p>
+            Whether your property is located near the iconic <strong>{landmark}</strong> or in the residential hubs of {locationName}, our team of expert civil engineers ensures high-quality construction, transparent pricing, and on-time delivery. We are recognized as the <strong>best builders in {locationName}</strong> for our commitment to structural excellence.
+          </p>
+
+          <img src="/images/localities/vastu-compliant-architectural-drafting-office-trichy.webp" alt={`Construction projects near ${landmark}`} class="img-fluid rounded my-4" />
+
+          <h3>Why Choose Thulasi Engineers in {locationName}?</h3>
+          <p>
+            Building in <strong>{locationName}</strong> requires local expertise. We handle everything from site analysis near <strong>{landmark}</strong> to the final handover of your dream project.
+          </p>
+          
+          <ul>
+            <li><strong>Local Knowledge:</strong> We understand the soil conditions and architectural style of {locationName}.</li>
+            <li><strong>Proximity:</strong> Our office is conveniently located for clients in {locationName} and surrounding areas of Trichy.</li>
+            <li><strong>Quality Materials:</strong> We source premium materials for all projects in {locationName} to ensure durability.</li>
+            <li><strong>Fast Approvals:</strong> Extensive experience with {locationName} local body plan approvals.</li>
+          </ul>
+
+          <h3>Our Services in {locationName}</h3>
+          <div class="service-sub-grid">
+            <div class="sub-card">
+              <h4>Residential Construction</h4>
+              <p>Independent houses and luxury villas in <strong>{locationName}</strong>.</p>
+            </div>
+            <div class="sub-card">
+              <h4>Home Renovation</h4>
+              <p>Transforming old homes in {locationName} into modern living spaces.</p>
+            </div>
+            <div class="sub-card">
+              <h4>Structural Engineering</h4>
+              <p>Expert structural design and site management for {locationName} projects.</p>
+            </div>
+          </div>
+
+          <div class="cta-inner">
+            <h4>Start Your {locationName} Project Today</h4>
+            <p>Get a free site visit and estimation for your property in {locationName}.</p>
+            <a href="/contact" class="btn btn--red">GET FREE CONSULTATION</a>
+          </div>
+        </div>
+
+        <aside class="local-sidebar">
+          <div class="sidebar-box">
+            <h4>Locations Near {locationName}</h4>
+            <ul class="sidebar-links">
+              <li><a href="/construction-company-in-srirangam">Srirangam</a></li>
+              <li><a href="/builders-in-thillai-nagar">Thillai Nagar</a></li>
+              <li><a href="/civil-engineers-in-kk-nagar">KK Nagar</a></li>
+              <li><a href="/home-renovation-in-woraiyur">Woraiyur</a></li>
+            </ul>
+          </div>
+
+          <div class="sidebar-box map-box">
+            <h4>Local Landmark</h4>
+            <p>We serve areas around <strong>{landmark}</strong> and the entire {locationName} locality.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <AreasServed />
+  <FAQSection faqs={localFaqs} title={`FAQs for ${locationName} Projects`} />
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+  }
+
+  .page-banner__title span {
+    color: var(--gold);
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: var(--gold);
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .local-content { padding: 100px 0; }
+  .local-grid { display: grid; grid-template-columns: 8fr 4fr; gap: 60px; }
+  
+  .local-main h2 { font-family: var(--font-head); font-size: 2.2rem; font-weight: 800; margin-bottom: 25px; color: var(--black); }
+  .local-main h3 { font-family: var(--font-head); font-size: 1.6rem; font-weight: 700; margin-top: 40px; margin-bottom: 20px; color: var(--black); }
+  .local-main p { font-size: 1.1rem; line-height: 1.8; color: var(--text-body); margin-bottom: 20px; }
+  .local-main ul { margin-bottom: 30px; padding-left: 20px; }
+  .local-main li { margin-bottom: 12px; font-size: 1.05rem; color: var(--text-body); position: relative; list-style: none; padding-left: 25px; }
+  .local-main li::before { content: '✓'; position: absolute; left: 0; color: var(--red); font-weight: 900; }
+
+  .service-sub-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0; }
+  .sub-card { background: #f8f9fa; padding: 25px; border-radius: 15px; border-left: 4px solid var(--red); }
+  .sub-card h4 { font-family: var(--font-head); font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+
+  .cta-inner { background: var(--black); color: #fff; padding: 50px; border-radius: 20px; text-align: center; margin-top: 60px; }
+  .cta-inner h4 { font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 15px; }
+
+  /* Sidebar */
+  .sidebar-box { background: #fff; padding: 35px; border-radius: 20px; border: 1px solid var(--gray-border); margin-bottom: 30px; }
+  .sidebar-box h4 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 800; margin-bottom: 20px; border-bottom: 2px solid var(--red); padding-bottom: 10px; }
+  .sidebar-links { list-style: none; padding: 0; }
+  .sidebar-links li { margin-bottom: 12px; }
+  .sidebar-links a { color: var(--text-body); font-weight: 600; text-decoration: none; transition: color 0.2s; }
+  .sidebar-links a:hover { color: var(--red); }
+
+  @media (max-width: 1024px) {
+    .local-grid { grid-template-columns: 1fr; }
+    .page-banner { 
+      min-height: 40vh; 
+      padding-top: 120px; 
+      padding-bottom: 80px; 
+    }
+  }
+</style>

@@ -1,0 +1,662 @@
+---
+import BaseLayout from './engineering-authority-layout.astro';
+import ContactMini from '../components/features/contact/ContactMini.astro';
+import AIAnswerBox from '../components/features/seo/AIAnswerBox.astro';
+import { SITE_METADATA } from '../app/config/site.ts';
+
+const { post } = Astro.props;
+const { data, slug } = post;
+---
+
+<BaseLayout 
+  title={data.seoTitle || data.title} 
+  description={data.seoDescription || data.description}
+>
+  <article class="blog-post">
+    <!-- Cinematic Hero Header -->
+    <header class="page-banner blog-banner">
+      <div class="page-banner__bg">
+        <img src={data.image} alt={data.title} class="banner-img" />
+        <div class="page-banner__overlay"></div>
+      </div>
+      
+      <div class="container page-banner__content reveal-up">
+        <div class="section-badge-pill">
+          {data.category.replace('-', ' ').toUpperCase()}
+        </div>
+        
+        <h1 class="page-banner__title blog-banner__title">{data.title}</h1>
+        
+        <div class="blog-meta-cinematic">
+          <div class="author-box">
+            <div class="avatar">{data.author[0]}</div>
+            <span>{data.author}</span>
+          </div>
+          <div class="meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <path d="M3 10h18"></path>
+            </svg>
+            {data.pubDate.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </div>
+        </div>
+
+        <nav class="breadcrumb">
+          <a href="/blog">Blog</a>
+          <span class="sep">/</span>
+          <a href={`/blog/${data.category}`}>{data.category.replace('-', ' ')}</a>
+        </nav>
+      </div>
+
+      <!-- Wave Separator -->
+      <div class="banner-wave">
+        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+        </svg>
+      </div>
+    </header>
+
+    <!-- Content Area -->
+    <div class="blog-body-wrapper">
+      <div class="container">
+        <div class="blog-grid">
+          <main class="blog-main-content">
+            {data.aiAnswer && <AIAnswerBox answer={data.aiAnswer} />}
+            
+            <div class="prose">
+              <slot />
+            </div>
+
+            <!-- FAQ Section -->
+            {data.faqs && (
+              <div class="blog-faqs">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-accordion">
+                  {data.faqs.map(faq => (
+                    <div class="faq-item">
+                      <h3>{faq.question}</h3>
+                      <p>{faq.answer}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </main>
+
+          <aside class="blog-sidebar">
+            <div class="sidebar-card cta-card">
+              <h3>Need Expert Help?</h3>
+              <p>Consult with Trichy's top engineering team for your project.</p>
+              <a href="/contact" class="btn-gold w-full">GET FREE QUOTE →</a>
+              <a href={`https://wa.me/${SITE_METADATA.whatsapp.replace('+', '')}`} class="btn-outline-navy w-full mt-10">WHATSAPP US →</a>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Share Article</h3>
+              <div class="social-share">
+                <div class="share-buttons">
+                  <a href="#" class="share-btn" aria-label="Share on Facebook">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                  </a>
+                  <a href="#" class="share-btn" aria-label="Share on Twitter">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+                  </a>
+                  <a href="#" class="share-btn" aria-label="Share on LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                  </a>
+                  <a href="#" class="share-btn" aria-label="Share via WhatsApp">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l2.28-2.28a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-card recent-posts">
+              <h3>Recent Posts</h3>
+              <ul class="recent-posts-list">
+                <li><a href="#">Understanding Construction Costs in Trichy</a></li>
+                <li><a href="#">Top 10 Tips for Building Your Dream Home</a></li>
+                <li><a href="#">Why Choose A-Class Contractors in Trichy</a></li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* CSS Variables */
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+    --text-dark: #0d1b3e;
+    --text-muted: #4b5563;
+    --bg-white: #ffffff;
+    --bg-light: #f8fafc;
+    --border-light: rgba(13, 27, 62, 0.08);
+  }
+
+  .blog-post {
+    background: var(--bg-white);
+    color: var(--text-muted);
+    overflow-x: hidden;
+  }
+
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 160px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.25;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--navy) 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .page-banner__content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .section-badge-pill {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-block;
+    background: rgba(197, 160, 89, 0.1);
+    padding: 5px 15px;
+    border-radius: 50px;
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 25px;
+  }
+
+  .blog-banner__title {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Cinematic Meta Styles */
+  .blog-meta-cinematic {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    margin-bottom: 30px;
+    justify-content: center;
+  }
+  
+  .author-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .avatar {
+    width: 36px;
+    height: 36px;
+    background: var(--gold);
+    color: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+  }
+  
+  .meta-item svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--gold);
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    justify-content: center;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--gold);
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  /* Body Content */
+  .blog-body-wrapper { 
+    padding: 80px 0; 
+    background: var(--bg-white); 
+  }
+
+  .blog-grid { 
+    display: grid; 
+    grid-template-columns: 8fr 4fr; 
+    gap: 60px; 
+  }
+
+  /* Prose Content */
+  .prose { 
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .prose :global(h2) { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    margin: 50px 0 20px; 
+    color: var(--navy); 
+    line-height: 1.3; 
+  }
+
+  .prose :global(h3) { 
+    font-size: 1.4rem; 
+    font-weight: 700; 
+    margin: 35px 0 15px; 
+    color: var(--navy); 
+    line-height: 1.3; 
+  }
+
+  .prose :global(p) { 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    color: var(--text-muted); 
+    margin-bottom: 20px; 
+  }
+
+  .prose :global(ul, ol) { 
+    margin-bottom: 25px; 
+    padding-left: 25px; 
+  }
+
+  .prose :global(li) { 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    color: var(--text-muted); 
+    margin-bottom: 10px; 
+  }
+
+  .prose :global(strong) { 
+    color: var(--navy); 
+    font-weight: 700; 
+  }
+
+  .prose :global(blockquote) { 
+    border-left: 4px solid var(--gold); 
+    padding: 25px 30px; 
+    background: var(--bg-light); 
+    font-style: italic; 
+    font-size: 1.1rem; 
+    margin: 40px 0; 
+    border-radius: 0 16px 16px 0; 
+  }
+
+  .prose :global(table) { 
+    width: 100%; 
+    border-collapse: collapse; 
+    margin: 30px 0; 
+    display: block; 
+    overflow-x: auto; 
+  }
+
+  .prose :global(th) { 
+    background: var(--bg-light); 
+    text-align: left; 
+    padding: 12px; 
+    font-weight: 700; 
+    border: 1px solid var(--border-light); 
+    color: var(--navy);
+  }
+
+  .prose :global(td) { 
+    padding: 12px; 
+    border: 1px solid var(--border-light); 
+    color: var(--text-muted);
+  }
+
+  .prose :global(img) {
+    border-radius: 16px;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Blog FAQs */
+  .blog-faqs { 
+    margin-top: 80px; 
+    padding-top: 60px; 
+    border-top: 1px solid var(--border-light); 
+  }
+
+  .blog-faqs h2 { 
+    font-size: 1.8rem; 
+    font-weight: 800; 
+    color: var(--navy);
+    margin-bottom: 30px; 
+  }
+
+  .faq-item { 
+    margin-bottom: 20px; 
+    background: var(--bg-white); 
+    border: 1px solid var(--border-light); 
+    padding: 25px 30px; 
+    border-radius: 16px; 
+    transition: all 0.3s ease; 
+  }
+
+  .faq-item:hover { 
+    border-color: rgba(197, 160, 89, 0.3); 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); 
+  }
+
+  .faq-item h3 { 
+    font-size: 1.15rem; 
+    font-weight: 800; 
+    margin-bottom: 12px; 
+    color: var(--navy); 
+    line-height: 1.4; 
+  }
+
+  .faq-item p { 
+    font-size: 0.95rem; 
+    color: var(--text-muted); 
+    line-height: 1.7; 
+    margin-bottom: 0; 
+  }
+
+  /* Sidebar */
+  .blog-sidebar { 
+    position: sticky; 
+    top: 120px; 
+    height: fit-content; 
+  }
+
+  .sidebar-card { 
+    background: var(--bg-white); 
+    border: 1px solid var(--border-light); 
+    border-radius: 20px; 
+    padding: 30px; 
+    margin-bottom: 30px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02); 
+  }
+
+  .sidebar-card h3 { 
+    font-size: 1.2rem; 
+    font-weight: 800; 
+    color: var(--navy);
+    margin-bottom: 20px; 
+  }
+
+  /* CTA Card */
+  .cta-card { 
+    background: linear-gradient(135deg, var(--navy) 0%, #1a2b5e 100%); 
+    color: #ffffff; 
+    border: none; 
+  }
+
+  .cta-card h3 { 
+    color: #ffffff; 
+  }
+
+  .cta-card p { 
+    color: rgba(255, 255, 255, 0.8); 
+    margin-bottom: 25px; 
+  }
+
+  /* Buttons */
+  .btn-gold {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline-navy {
+    display: inline-block;
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.5);
+    padding: 12px 24px;
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .btn-outline-navy:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  .w-full {
+    width: 100%;
+    display: block;
+  }
+
+  .mt-10 { 
+    margin-top: 12px; 
+  }
+
+  /* Share Buttons */
+  .share-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .share-btn {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--navy);
+    transition: all 0.3s ease;
+  }
+
+  .share-btn:hover {
+    background: var(--gold);
+    color: #ffffff;
+    transform: translateY(-3px);
+  }
+
+  .share-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Recent Posts */
+  .recent-posts-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .recent-posts-list li {
+    margin-bottom: 15px;
+  }
+
+  .recent-posts-list a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 5px 0;
+  }
+
+  .recent-posts-list a:hover {
+    color: var(--gold);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 40px;
+    }
+
+    .blog-grid { 
+      grid-template-columns: 1fr; 
+      gap: 50px; 
+    }
+
+    .blog-banner__title { 
+      font-size: 2.5rem !important; 
+    }
+
+    .page-banner {
+      min-height: 40vh;
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .blog-body-wrapper { 
+      padding: 60px 0; 
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .sidebar-card { 
+      padding: 25px; 
+    }
+
+    .faq-item { 
+      padding: 20px; 
+    }
+
+    .prose :global(blockquote) { 
+      padding: 20px; 
+      font-size: 1rem; 
+    }
+
+    .prose :global(h2) { 
+      font-size: 1.5rem; 
+    }
+
+    .prose :global(h3) { 
+      font-size: 1.2rem; 
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+  }
+</style>

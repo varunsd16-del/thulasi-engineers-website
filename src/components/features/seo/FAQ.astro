@@ -1,0 +1,313 @@
+---
+// FAQ.astro - SEO Optimized FAQ section with Schema support
+const faqs = [
+  {
+    question: "Which is the best construction company in Trichy?",
+    answer: "Thulasi Engineers & Contractors is widely recognized as the best construction company in Trichy, offering premium residential, commercial, and industrial construction services with a focus on quality, safety, and on-time delivery."
+  },
+  {
+    question: "What is the average house construction cost in Trichy?",
+    answer: "The house construction cost in Trichy typically ranges from ₹1,800 to ₹2,500 per sq.ft., depending on the materials used, design complexity, and specific requirements. We provide detailed estimations to help you plan your budget effectively."
+  },
+  {
+    question: "Do you provide turnkey construction services in Trichy?",
+    answer: "Yes, we are leading turnkey construction contractors in Trichy. We handle everything from architectural planning and structural design to civil work, interior design, and final handover, ensuring a hassle-free experience for our clients."
+  },
+  {
+    question: "Are you registered civil engineers in Trichy?",
+    answer: "Absolutely. Our team consists of highly experienced and registered civil engineers in Trichy who adhere to all local building regulations and national safety standards for every project we undertake."
+  },
+  {
+    question: "Do you handle home renovation projects in Trichy?",
+    answer: "Yes, we specialize in home renovation and remodeling in Trichy. Whether it's a modular kitchen upgrade, structural strengthening, or a complete home makeover, our renovation experts deliver stunning results."
+  }
+];
+
+// Generate FAQ Schema
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header text-center reveal-up">
+      <div class="section-badge">HAVE QUESTIONS?</div>
+      <h2 class="section-title">Frequently Asked <span class="text-gold">Questions</span></h2>
+      <div class="heading-accent-line center-line"></div>
+      <p class="section-desc center-desc">Get quick answers to common queries about construction and engineering services in Trichy.</p>
+    </div>
+
+    <div class="faq-grid">
+      {faqs.map((faq, index) => (
+        <div class="faq-item reveal-up" style={`transition-delay: ${index * 0.1}s`}>
+          <div class="faq-question js-faq-toggle">
+            <h3>{faq.question}</h3>
+            <span class="faq-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"/>
+                <line x1="5" y1="12" x2="19" y2="12"/>
+              </svg>
+            </span>
+          </div>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>{faq.answer}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+</section>
+
+<script>
+  const toggles = document.querySelectorAll('.js-faq-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.parentElement;
+      const isActive = item?.classList.contains('active');
+      
+      // Close all other items
+      document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
+      
+      if (!isActive && item) {
+        item.classList.add('active');
+      }
+    });
+  });
+</script>
+
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --gold: #c5a059;
+    --gold-light: #d4af37;
+  }
+
+  .faq-section {
+    background: #0d1b3e;
+    padding: 100px 0;
+    border-top: 1px solid rgba(197, 160, 89, 0.15);
+    border-bottom: 1px solid rgba(197, 160, 89, 0.15);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .text-gold {
+    color: var(--gold);
+  }
+
+  .heading-accent-line {
+    width: 60px;
+    height: 2px;
+    background: var(--gold);
+    margin: 20px auto 25px auto;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    max-width: 650px;
+  }
+
+  .text-center { 
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .center-desc { 
+    margin: 0 auto; 
+  }
+
+  .faq-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 5;
+  }
+
+  .faq-item {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(197, 160, 89, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.active {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(197, 160, 89, 0.5);
+    transform: scale(1.01);
+  }
+
+  .faq-question {
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .faq-question:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .faq-question h3 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    line-height: 1.4;
+    padding-right: 20px;
+  }
+
+  .faq-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: var(--gold);
+    transition: transform 0.4s ease;
+  }
+
+  .faq-item.active .faq-icon svg {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 300px;
+  }
+
+  .faq-answer-inner {
+    padding: 0 32px 32px 32px;
+  }
+
+  .faq-answer p {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .container {
+      padding: 0 40px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-section {
+      padding: 60px 0;
+    }
+
+    .container {
+      padding: 0 24px;
+    }
+
+    .faq-question {
+      padding: 18px 24px;
+    }
+
+    .faq-question h3 {
+      font-size: 0.95rem;
+    }
+
+    .faq-answer-inner {
+      padding: 0 24px 24px 24px;
+    }
+
+    .faq-answer p {
+      font-size: 0.9rem;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+  }
+</style>

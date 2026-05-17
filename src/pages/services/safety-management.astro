@@ -1,0 +1,203 @@
+---
+import ServiceDetailLayout from '../../layouts/turnkey-service-detail-layout.astro';
+
+const service = {
+  title: 'Construction Safety Management & Engineering in Trichy',
+  shortTitle: 'Safety Management',
+  image: '/images/services/zero-accident-construction-safety-management-trichy.webp',
+  description: 'Prioritizing life and investment through professional construction safety management in Trichy. Zero-accident site engineering.',
+  features: ['On-site Safety Engineering', 'Hazard Identification & Mitigation', 'Worker Safety Training', 'Insurance & Compliance Management', 'Structural Stability Monitoring'],
+  faqs: [
+    { q: 'How do you ensure safety on site?', a: 'We employ dedicated safety officers, provide certified PPE, and conduct weekly safety drills and hazard assessments.' },
+    { q: 'Is safety management included in the construction cost?', a: 'Yes, safety engineering is a fundamental part of our standard operating procedure and is built into our service.' }
+  ]
+};
+
+const safetyTypes = [
+  { title: 'Site Safety Engineering', image: '/images/services/on-site-safety-officer-engineering-protocols-trichy.webp', desc: 'Continuous monitoring and enforcement of safety protocols on active construction sites.' },
+  { title: 'Hazard Mitigation', image: '/images/services/construction-site-hazard-identification-mitigation-trichy.webp', desc: 'Proactive identification and elimination of potential risks to prevent accidents.' },
+  { title: 'Safety Training', image: '/images/services/certified-worker-site-safety-training-drills-trichy.webp', desc: 'Regular workshops and drills to keep our workforce updated on international safety standards.' },
+  { title: 'Equipment Inspection', image: '/images/services/rigorous-crane-heavy-equipment-inspection-trichy.webp', desc: 'Rigorous checks of machinery and scaffolding to ensure mechanical and structural safety.' },
+  { title: 'Compliance Audits', image: '/images/services/industrial-safety-regulations-compliance-audits-trichy.webp', desc: 'Regular safety audits to ensure full compliance with government and industrial safety norms.' }
+];
+---
+
+<ServiceDetailLayout service={service}>
+  <div class="content-wrapper">
+    <div class="section-intro">
+      <h2>Uncompromising Construction Safety</h2>
+      <p>Safety is the cornerstone of engineering excellence. At Thulasi Engineers, we implement world-class <strong>construction safety management in Trichy</strong>, protecting our workers and your property investment.</p>
+    </div>
+    
+    <div class="portfolio-section">
+      <div class="section-header">
+        <div class="section-label">OUR EXPERTISE</div>
+        <h3>Our Safety Solutions</h3>
+        <p>We implement rigorous safety measures across every project:</p>
+      </div>
+
+      <div class="construction-grid">
+        {safetyTypes.map((type, index) => (
+          <div class="construction-card" style={`animation-delay: ${0.1 * index}s`}>
+            <div class="card-image">
+              <img src={type.image} alt={type.title} loading="lazy" />
+              <div class="card-overlay">
+                <span class="card-tag">SAFETY</span>
+              </div>
+            </div>
+            <div class="card-content">
+              <h4>{type.title}</h4>
+              <p>{type.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="section-why">
+      <h3>Zero-Accident Policy</h3>
+      <p>We maintain a strict zero-accident policy on all our sites, from high-rise commercial buildings in <strong>Thillai Nagar</strong> to industrial sheds in <strong>BHEL</strong>. Our safety engineers conduct daily audits and ensure 100% PPE compliance.</p>
+    </div>
+    
+    <div class="section-quality">
+      <h3>Structural Stability Audits</h3>
+      <p>During the construction process, we perform regular structural stability checks to ensure that the formwork, scaffolding, and load-bearing elements are secure, preventing any structural failures during execution.</p>
+    </div>
+  </div>
+</ServiceDetailLayout>
+
+<style>
+  /* Override layout styles for white background aesthetic */
+  :global(.service-details) {
+    background: #ffffff !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  :global(.details-text) {
+    color: #333;
+  }
+
+  :global(.details-text h2, .details-text h3, .details-text h4) {
+    color: #111 !important;
+  }
+
+  :global(.details-sidebar .sidebar-card) {
+    border: 1px solid #eee;
+    background: #fafafa;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .section-header {
+    margin-bottom: 40px;
+  }
+
+  .section-header h3 {
+    margin-top: 0 !important;
+    font-size: 2.2rem !important;
+    margin-bottom: 15px;
+  }
+
+  /* Construction Grid */
+  .construction-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+  }
+
+  .construction-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 1px solid #d1d5db;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+  }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .construction-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: #9ca3af;
+  }
+
+  .card-image {
+    position: relative;
+    height: 280px;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .construction-card:hover .card-image img {
+    transform: scale(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+  }
+
+  .card-tag {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h4 {
+    font-size: 1.1rem !important;
+    margin-bottom: 10px !important;
+    color: #111;
+  }
+
+  .card-content p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: #666;
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 992px) {
+    .construction-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .card-image {
+      height: 240px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .section-header h3 {
+      font-size: 1.8rem !important;
+    }
+  }
+</style>

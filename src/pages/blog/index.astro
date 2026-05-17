@@ -1,0 +1,496 @@
+---
+import BaseLayout from '../../layouts/engineering-authority-layout.astro';
+import ContactMini from '../../components/features/contact/ContactMini.astro';
+import { categories } from '../../app/constants/blog.ts';
+
+const title = "Construction Authority Blog & Insights | Thulasi Engineers Trichy";
+const description = "The ultimate knowledge hub for house construction, architecture, PMC, and engineering insights in Trichy. 16+ dedicated service blog categories.";
+---
+
+<BaseLayout title={title} description={description} activeNav="blog">
+  <!-- Cinematic Page Banner -->
+  <section class="page-banner">
+    <div class="page-banner__bg">
+      <img src="/images/localities/stormwater-drain-civil-infrastructure-trichy.webp" alt="Thulasi Blog Hub" class="banner-img" />
+      <div class="page-banner__overlay"></div>
+    </div>
+    <div class="container page-banner__content reveal-up">
+      <div class="tech-badge">
+        <span class="status-dot"></span>
+        ENGINEERING KNOWLEDGE CENTER
+      </div>
+      <h1 class="page-banner__title">CONSTRUCTION <span class="text-accent">AUTHORITY HUB</span></h1>
+      <p class="page-banner__subtitle">Deep-dive into 16+ specialized engineering silos. The most comprehensive construction guide for Trichy and Tamil Nadu.</p>
+      
+      <nav class="breadcrumb">
+        <a href="/" class="magnetic-elem">Home</a>
+        <span class="sep">/</span>
+        <span class="current">Blog</span>
+      </nav>
+    </div>
+
+    <!-- Wave Separator -->
+    <div class="banner-wave">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
+      </svg>
+    </div>
+  </section>
+
+  <!-- Category Grid -->
+  <section class="category-grid-section">
+    <div class="container">
+      <div class="section-header text-center reveal-up">
+        <div class="section-badge">KNOWLEDGE ECOSYSTEM</div>
+        <h2 class="section-title">Select an <span class="text-gold">Engineering Silo</span></h2>
+        <p class="section-sub">Every service we offer is backed by a dedicated knowledge ecosystem to help you make informed decisions.</p>
+      </div>
+
+      <div class="category-grid">
+        {categories.map((cat, index) => (
+          <a href={`/blog/${cat.slug}`} class="category-card reveal-up" style={`animation-delay: ${0.05 * index}s`}>
+            <div class="card-content">
+              <div class="card-count">{index + 1 < 10 ? `0${index + 1}` : index + 1}</div>
+              <h3>{cat.title}</h3>
+              <p>{cat.description}</p>
+              <div class="card-footer">
+                <span class="explore">EXPLORE ECOSYSTEM</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </div>
+            </div>
+            <div class="card-hover-line"></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactMini />
+</BaseLayout>
+
+<style>
+  /* Page Banner */
+  .page-banner {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    background: var(--navy);
+    overflow: visible;
+    padding-top: 140px;
+    padding-bottom: 120px;
+    border: none !important;
+  }
+
+  .banner-wave {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .banner-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    transform: translateY(1px);
+  }
+
+  .banner-wave .shape-fill {
+    fill: var(--bg-white);
+  }
+
+  .page-banner__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+  }
+
+  .page-banner__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #0d1b3e 0%, rgba(13, 27, 62, 0.85) 50%, rgba(13, 27, 62, 0.7) 100%);
+    z-index: 2;
+  }
+
+  .container {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 60px;
+  }
+
+  .page-banner__content {
+    max-width: 800px;
+  }
+
+  .tech-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(197, 160, 89, 0.15);
+    padding: 6px 16px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: #c5a059;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+  }
+
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    background: #c5a059;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.2); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  .page-banner__title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .page-banner__title .text-accent {
+    color: #c5a059;
+    position: relative;
+    display: inline-block;
+  }
+
+  .page-banner__title .text-accent::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #c5a059;
+    border-radius: 2px;
+  }
+
+  .page-banner__subtitle {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 30px;
+    max-width: 600px;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: #c5a059;
+  }
+
+  .breadcrumb .sep {
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .breadcrumb .current {
+    color: #c5a059;
+  }
+
+  /* Category Grid Section */
+  .category-grid-section {
+    padding: 100px 0;
+    background: #ffffff;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .section-badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #c5a059;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    display: inline-block;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 800;
+    color: #0d1b3e;
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .text-gold {
+    color: #c5a059;
+  }
+
+  .section-sub {
+    font-size: 1rem;
+    color: #4b5563;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* Category Grid */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+  }
+
+  /* Category Card */
+  .category-card {
+    background: #ffffff;
+    border: 1px solid rgba(13, 27, 62, 0.08);
+    border-radius: 16px;
+    padding: 32px;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  }
+
+  .category-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(197, 160, 89, 0.3);
+    box-shadow: 0 20px 35px rgba(13, 27, 62, 0.08);
+  }
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex-grow: 1;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-count {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #c5a059;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  .category-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0d1b3e;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+  }
+
+  .category-card:hover h3 {
+    color: #c5a059;
+  }
+
+  .category-card p {
+    font-size: 0.85rem;
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid rgba(13, 27, 62, 0.06);
+    margin-top: auto;
+  }
+
+  .explore {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #0d1b3e;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .category-card:hover .explore {
+    color: #c5a059;
+  }
+
+  .card-footer svg {
+    width: 20px;
+    height: 20px;
+    color: #c5a059;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover .card-footer svg {
+    transform: translateX(5px);
+  }
+
+  .card-hover-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #c5a059, #d4af37);
+    transition: width 0.4s ease;
+    z-index: 1;
+  }
+
+  .category-card:hover .card-hover-line {
+    width: 100%;
+  }
+
+  /* Reveal Animation */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 1200px) {
+    .container {
+      padding: 0 40px;
+    }
+    
+    .category-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .page-banner {
+      min-height: 45vh;
+      padding-top: 120px;
+    }
+    
+    .category-grid-section {
+      padding: 80px 0;
+    }
+    
+    .category-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 24px;
+    }
+    
+    .page-banner {
+      min-height: 40vh;
+      padding-top: 120px;
+      padding-bottom: 80px;
+    }
+    
+    .page-banner__title {
+      font-size: 2rem;
+    }
+    
+    .page-banner__subtitle {
+      font-size: 0.95rem;
+    }
+    
+    .category-grid-section {
+      padding: 60px 0;
+    }
+    
+    .category-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+    }
+    
+    .section-sub {
+      font-size: 0.9rem;
+    }
+    
+    .category-card {
+      padding: 25px;
+    }
+    
+    .category-card h3 {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (min-width: 1400px) {
+    .container {
+      padding: 0 80px;
+    }
+    
+    .category-grid {
+      gap: 35px;
+    }
+    
+    .category-card {
+      padding: 35px;
+    }
+    
+    .category-card h3 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
