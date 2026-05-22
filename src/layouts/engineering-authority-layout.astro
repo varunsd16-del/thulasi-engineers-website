@@ -23,7 +23,7 @@ const {
   description = SITE_METADATA.description,
   keywords = "construction company in trichy, best builders in trichy, civil engineers in trichy, building contractors in trichy, luxury construction trichy",
   canonical,
-  image = "/images/hero/og-construction-company-trichy.webp",
+  image = "/images/hero/og-construction-company-trichy.jpg",
   type = "website",
   activeNav = "",
   schema,
@@ -39,6 +39,23 @@ if (finalCanonical && !finalCanonical.endsWith('/')) {
     finalCanonical += '/';
   }
 }
+
+// Convert any .webp image to .jpg for Open Graph tags to ensure 100% compatibility with WhatsApp & Meta scrapers
+let ogImage = image;
+if (ogImage.endsWith('.webp')) {
+  if (ogImage === "/images/hero/og-construction-company-trichy.webp") {
+    ogImage = "/images/hero/og-construction-company-trichy.jpg";
+  } else {
+    // If it's another local image, replace webp with jpg as we have both formats
+    ogImage = ogImage.replace('.webp', '.jpg');
+  }
+}
+
+const imageType = ogImage.endsWith('.png') 
+  ? 'image/png' 
+  : ogImage.endsWith('.jpg') || ogImage.endsWith('.jpeg') 
+    ? 'image/jpeg' 
+    : 'image/webp';
 
 // Default LocalBusiness Schema
 const localBusinessSchema = {
@@ -119,14 +136,18 @@ const combinedSchema = Array.isArray(schema)
   <meta property="og:url" content={currentUrl} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
-  <meta property="og:image" content={new URL(image, Astro.url)} />
+  <meta property="og:image" content={new URL(ogImage, Astro.url)} />
+  <meta property="og:image:secure_url" content={new URL(ogImage, Astro.url)} />
+  <meta property="og:image:type" content={imageType} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:url" content={currentUrl} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
-  <meta property="twitter:image" content={new URL(image, Astro.url)} />
+  <meta property="twitter:image" content={new URL(ogImage, Astro.url)} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

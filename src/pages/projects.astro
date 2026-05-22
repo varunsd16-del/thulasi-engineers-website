@@ -29,53 +29,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
     </div>
   </section>
 
-  <!-- Category Showcase -->
-  <section class="category-showcase">
-    <div class="container">
-      <div class="category-showcase__header reveal-up">
-        <div class="section-badge">BROWSE BY SECTOR</div>
-        <h2 class="section-title">Explore Our <span class="text-gold">Expertise</span></h2>
-        <p class="section-desc">Each project tells a unique story of innovation, precision, and excellence</p>
-      </div>
-      <div class="category-grid">
-        <div class="category-card reveal-up" style="transition-delay: 0.05s;" data-category="all">
-          <div class="category-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="9" width="18" height="13" rx="1"/><path d="M9 22V12h6v10"/><path d="M3 9l9-7 9 7"/></svg>
-          </div>
-          <h3>All Projects</h3>
-          <span>30+ Projects</span>
-        </div>
-        <div class="category-card reveal-up" style="transition-delay: 0.1s;" data-category="residential">
-          <div class="category-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-          </div>
-          <h3>Residential</h3>
-          <span>15+ Projects</span>
-        </div>
-        <div class="category-card reveal-up" style="transition-delay: 0.15s;" data-category="commercial">
-          <div class="category-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="15" rx="1"/><path d="M16 7V5a2 2 0 0 0-8 0v2"/></svg>
-          </div>
-          <h3>Commercial</h3>
-          <span>8+ Projects</span>
-        </div>
-        <div class="category-card reveal-up" style="transition-delay: 0.2s;" data-category="industrial">
-          <div class="category-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="12" width="20" height="10" rx="1"/><path d="M6 12V7l5 5V7l5 5V7l4 5"/></svg>
-          </div>
-          <h3>Industrial</h3>
-          <span>5+ Projects</span>
-        </div>
-        <div class="category-card reveal-up" style="transition-delay: 0.25s;" data-category="infrastructure">
-          <div class="category-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 20h18M5 20V8l7-4 7 4v12"/><path d="M10 20v-6h4v6"/></svg>
-          </div>
-          <h3>Infrastructure</h3>
-          <span>4+ Projects</span>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Modern Project Grid with Masonry Layout -->
   <section class="modern-projects">
@@ -87,8 +40,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/structural-renovation-plastering-old-home-trichy.webp" alt="Royal Heights Apartments" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Residential</span>
-                <h3 class="project-title">Royal Heights Apartments</h3>
                 <div class="project-location">Trichy, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -102,8 +53,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/vastu-compliant-architectural-drafting-office-trichy.webp" alt="Grand Prime Office Complex" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Commercial</span>
-                <h3 class="project-title">Grand Prime Office Complex</h3>
                 <div class="project-location">Trichy, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -117,8 +66,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/site-supervision-timeline-management-trichy.webp" alt="Sri Venkateshwara Industries" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Industrial</span>
-                <h3 class="project-title">Sri Venkateshwara Industries</h3>
                 <div class="project-location">Karur, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -132,8 +79,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/site-safety-officer-construction-briefing-trichy.webp" alt="Trichy Bypass Road Project" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Infrastructure</span>
-                <h3 class="project-title">Trichy Bypass Road Project</h3>
                 <div class="project-location">Trichy, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -147,8 +92,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/green-building-aac-block-masonry-trichy.webp" alt="Heritage Home Renovation" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Residential</span>
-                <h3 class="project-title">Heritage Home Renovation</h3>
                 <div class="project-location">Trichy, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -162,8 +105,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/luxury-villa-structural-foundation-casting-srirangam.webp" alt="MJM Steel Fabrication Unit" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Industrial</span>
-                <h3 class="project-title">MJM Steel Fabrication Unit</h3>
                 <div class="project-location">Pudukottai, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -177,8 +118,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/ongoing-commercial-retail-complex-cantonment.webp" alt="Green View Villas" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Residential</span>
-                <h3 class="project-title">Green View Villas</h3>
                 <div class="project-location">Trichy, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -192,8 +131,6 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
             <img src="/images/localities/residential-house-structural-columns-woraiyur.webp" alt="Sewage Treatment Plant" />
             <div class="project-item__overlay">
               <div class="overlay-content">
-                <span class="project-category">Infrastructure</span>
-                <h3 class="project-title">Sewage Treatment Plant</h3>
                 <div class="project-location">Trichy, Tamil Nadu</div>
                 <a href="#" class="project-link">View Project →</a>
               </div>
@@ -641,6 +578,17 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
     border-radius: 30px;
     padding: 60px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cta-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
   }
 
   .cta-card__content h3 {
@@ -648,12 +596,15 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
     font-weight: 800;
     color: #ffffff;
     margin-bottom: 16px;
+    text-align: center;
   }
 
   .cta-card__content p {
     font-size: 1rem;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 32px;
+    text-align: center;
+    max-width: 600px;
   }
 
   .btn-gold {
@@ -775,25 +726,3 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
     }
   }
 </style>
-
-<script>
-  // Category filtering functionality
-  document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', () => {
-      const category = card.getAttribute('data-category');
-      
-      // Update active state
-      document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
-      
-      // Filter projects
-      document.querySelectorAll('.project-item').forEach(project => {
-        if (category === 'all' || project.getAttribute('data-category') === category) {
-          project.style.display = 'block';
-        } else {
-          project.style.display = 'none';
-        }
-      });
-    });
-  });
-</script>
