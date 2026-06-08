@@ -1,21 +1,17 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
+
 // ProjectShowcase.astro - Dynamic Infinite Auto-Scrolling Gallery
-const allImages = [
-  "/images/localities/ongoing-residential-villa-construction-trichy.webp", "/images/localities/structural-concrete-framing-work-trichy.webp", "/images/localities/commercial-hub-structural-column-casting-trichy.webp",
-  "/images/localities/brickwork-plastering-villa-construction-trichy.webp", "/images/localities/civil-engineers-site-inspection-quality-check-trichy.webp", "/images/localities/independent-villa-elevation-design-srirangam.webp",
-  "/images/localities/heavy-peb-industrial-shed-framing-thuvakudi.webp", "/images/localities/stormwater-drain-civil-infrastructure-trichy.webp", "/images/localities/structural-renovation-plastering-old-home-trichy.webp",
-  "/images/localities/vastu-compliant-architectural-drafting-office-trichy.webp", "/images/localities/site-supervision-timeline-management-trichy.webp", "/images/localities/site-safety-officer-construction-briefing-trichy.webp",
-  "/images/localities/green-building-aac-block-masonry-trichy.webp", "/images/localities/luxury-villa-structural-foundation-casting-srirangam.webp", "/images/localities/ongoing-commercial-retail-complex-cantonment.webp",
-  "/images/localities/residential-house-structural-columns-woraiyur.webp", "/images/localities/industrial-peb-warehouse-foundation-thuvakudi.webp", "/images/localities/civil-infrastructure-road-subbase-grading-trichy.webp",
-  "/images/localities/home-renovation-damp-proofing-treatment-puthur.webp", "/images/localities/architectural-plans-approval-verification-trichy.webp", "/images/localities/project-management-procurement-cost-tracking-trichy.webp",
-  "/images/localities/construction-site-ppe-compliance-safety-check-trichy.webp", "/images/localities/eco-friendly-fly-ash-brick-construction-trichy.webp", "/images/localities/luxury-villa-facade-elevation-design-srirangam.webp",
-  "/images/localities/commercial-complex-interior-layout-planning-trichy.webp", "/images/localities/residential-villa-brickwork-ongoing-kk-nagar.webp", "/images/localities/industrial-peb-shed-portal-frames-erection-trichy.webp",
-  "/images/localities/urban-roads-asphalt-laying-machinery-trichy.webp", "/images/localities/luxury-residence-elevation-thulasi-engineers.webp", "/images/localities/modern-independent-villa-construction-srirangam.webp"
-];
+const localitiesDir = path.resolve('public/images/localities');
+const allImages = fs.readdirSync(localitiesDir)
+  .filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file))
+  .map(file => `/images/localities/${file}`);
 
 // Split images into two rows for dynamic effect
-const row1 = allImages.slice(0, 15);
-const row2 = allImages.slice(15);
+const half = Math.ceil(allImages.length / 2);
+const row1 = allImages.slice(0, half);
+const row2 = allImages.slice(half);
 ---
 
 <section class="showcase-section reveal-up">
@@ -33,7 +29,7 @@ const row2 = allImages.slice(15);
     <div class="marquee__group">
       {row1.map((src, index) => (
         <div class="marquee__item" key={`row1-${index}`}>
-          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <img src={src} alt="Thulasi Construction Project" loading="eager" decoding="async" />
           <div class="marquee__overlay">
             <span class="view-tag">VIEW PROJECT</span>
           </div>
@@ -44,7 +40,7 @@ const row2 = allImages.slice(15);
     <div class="marquee__group" aria-hidden="true">
       {row1.map((src, index) => (
         <div class="marquee__item" key={`row1-duplicate-${index}`}>
-          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <img src={src} alt="Thulasi Construction Project" loading="eager" decoding="async" />
           <div class="marquee__overlay">
             <span class="view-tag">VIEW PROJECT</span>
           </div>
@@ -58,7 +54,7 @@ const row2 = allImages.slice(15);
     <div class="marquee__group">
       {row2.map((src, index) => (
         <div class="marquee__item" key={`row2-${index}`}>
-          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <img src={src} alt="Thulasi Construction Project" loading="eager" decoding="async" />
           <div class="marquee__overlay">
             <span class="view-tag">VIEW PROJECT</span>
           </div>
@@ -69,7 +65,7 @@ const row2 = allImages.slice(15);
     <div class="marquee__group" aria-hidden="true">
       {row2.map((src, index) => (
         <div class="marquee__item" key={`row2-duplicate-${index}`}>
-          <img src={src} alt="Thulasi Construction Project" loading="lazy" />
+          <img src={src} alt="Thulasi Construction Project" loading="eager" decoding="async" />
           <div class="marquee__overlay">
             <span class="view-tag">VIEW PROJECT</span>
           </div>

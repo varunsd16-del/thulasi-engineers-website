@@ -1,5 +1,85 @@
 ---
+import fs from 'node:fs';
+import path from 'node:path';
 import BaseLayout from '../layouts/engineering-authority-layout.astro';
+
+// Read all images dynamically from public/images/localities
+const localitiesDir = path.resolve('public/images/localities');
+const filenames = fs.readdirSync(localitiesDir);
+const allImages = filenames.filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file));
+
+function getCategory(filename) {
+  const lower = filename.toLowerCase();
+  if (lower.includes('villa') || lower.includes('residence') || lower.includes('residential') || lower.includes('home') || lower.includes('house') || lower.includes('apartment') || lower.includes('brickwork') || lower.includes('plastering')) {
+    return 'residential';
+  }
+  if (lower.includes('commercial') || lower.includes('office') || lower.includes('retail') || lower.includes('complex') || lower.includes('drafting') || lower.includes('architectural') || lower.includes('plans')) {
+    return 'commercial';
+  }
+  if (lower.includes('peb') || lower.includes('industrial') || lower.includes('warehouse') || lower.includes('shed') || lower.includes('fabrication') || lower.includes('concrete') || lower.includes('framing')) {
+    return 'industrial';
+  }
+  if (lower.includes('infrastructure') || lower.includes('road') || lower.includes('drain') || lower.includes('sewage') || lower.includes('asphalt') || lower.includes('civil')) {
+    return 'infrastructure';
+  }
+  return 'residential';
+}
+
+function getTitle(filename) {
+  let name = filename.replace(/\.(webp|png|jpe?g)$/i, '');
+  const suffixes = ['-trichy', '-srirangam', '-thuvakudi', '-puthur', '-cantonment', '-woraiyur', '-kk-nagar', '-thulasi-engineers'];
+  for (const suffix of suffixes) {
+    if (name.endsWith(suffix)) {
+      name = name.slice(0, -suffix.length);
+      break;
+    }
+  }
+  return name
+    .split('-')
+    .map(word => {
+      if (word === 'peb') return 'PEB';
+      if (word === 'aac') return 'AAC';
+      if (word === 'ppe') return 'PPE';
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(' ');
+}
+
+function getLocation(filename) {
+  const name = filename.replace(/\.(webp|png|jpe?g)$/i, '').toLowerCase();
+  if (name.endsWith('-trichy')) return 'Trichy, Tamil Nadu';
+  if (name.endsWith('-srirangam')) return 'Srirangam, Trichy';
+  if (name.endsWith('-thuvakudi')) return 'Thuvakudi, Trichy';
+  if (name.endsWith('-puthur')) return 'Puthur, Trichy';
+  if (name.endsWith('-cantonment')) return 'Cantonment, Trichy';
+  if (name.endsWith('-woraiyur')) return 'Woraiyur, Trichy';
+  if (name.endsWith('-kk-nagar')) return 'KK Nagar, Trichy';
+  return 'Trichy, Tamil Nadu';
+}
+
+const projects = allImages.map((filename, index) => {
+  const category = getCategory(filename);
+  const title = getTitle(filename);
+  const location = getLocation(filename);
+  
+  // Distribute layout types (large, tall, regular) for a beautiful masonry look
+  let layoutClass = '';
+  if (index % 7 === 0) {
+    layoutClass = 'project-large';
+  } else if (index % 7 === 4) {
+    layoutClass = 'project-tall';
+  }
+  
+  return {
+    src: `/images/localities/${filename}`,
+    alt: title,
+    title,
+    category,
+    location,
+    layoutClass,
+    delay: `${0.05 * (index % 8)}s`
+  };
+});
 ---
 
 <BaseLayout title="Projects — Thulasi Engineers & Contractors" activeNav="projects">
@@ -34,109 +114,13 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
   <section class="modern-projects">
     <div class="container">
       <div class="projects-masonry">
-        <!-- Project 1 - Large -->
-        <div class="project-item project-large reveal-up" style="transition-delay: 0.05s;" data-category="residential">
-          <div class="project-item__image">
-            <img src="/images/localities/structural-renovation-plastering-old-home-trichy.webp" alt="Royal Heights Apartments" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Trichy, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
+        {projects.map((project) => (
+          <div class={`project-item ${project.layoutClass} reveal-up`} style={`transition-delay: ${project.delay};`} data-category={project.category}>
+            <div class="project-item__image">
+              <img src={project.src} alt={project.alt} loading="eager" decoding="async" />
             </div>
           </div>
-        </div>
-
-        <!-- Project 2 -->
-        <div class="project-item reveal-up" style="transition-delay: 0.1s;" data-category="commercial">
-          <div class="project-item__image">
-            <img src="/images/localities/vastu-compliant-architectural-drafting-office-trichy.webp" alt="Grand Prime Office Complex" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Trichy, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-item reveal-up" style="transition-delay: 0.15s;" data-category="industrial">
-          <div class="project-item__image">
-            <img src="/images/localities/site-supervision-timeline-management-trichy.webp" alt="Sri Venkateshwara Industries" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Karur, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 4 - Large -->
-        <div class="project-item project-large reveal-up" style="transition-delay: 0.2s;" data-category="infrastructure">
-          <div class="project-item__image">
-            <img src="/images/localities/site-safety-officer-construction-briefing-trichy.webp" alt="Trichy Bypass Road Project" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Trichy, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 5 -->
-        <div class="project-item reveal-up" style="transition-delay: 0.25s;" data-category="residential">
-          <div class="project-item__image">
-            <img src="/images/localities/green-building-aac-block-masonry-trichy.webp" alt="Heritage Home Renovation" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Trichy, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-item reveal-up" style="transition-delay: 0.3s;" data-category="industrial">
-          <div class="project-item__image">
-            <img src="/images/localities/luxury-villa-structural-foundation-casting-srirangam.webp" alt="MJM Steel Fabrication Unit" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Pudukottai, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 7 -->
-        <div class="project-item reveal-up" style="transition-delay: 0.35s;" data-category="residential">
-          <div class="project-item__image">
-            <img src="/images/localities/ongoing-commercial-retail-complex-cantonment.webp" alt="Green View Villas" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Trichy, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Project 8 - Tall -->
-        <div class="project-item project-tall reveal-up" style="transition-delay: 0.4s;" data-category="infrastructure">
-          <div class="project-item__image">
-            <img src="/images/localities/residential-house-structural-columns-woraiyur.webp" alt="Sewage Treatment Plant" />
-            <div class="project-item__overlay">
-              <div class="overlay-content">
-                <div class="project-location">Trichy, Tamil Nadu</div>
-                <a href="#" class="project-link">View Project →</a>
-              </div>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -406,11 +390,31 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
     grid-auto-flow: dense;
   }
 
+  @media (min-width: 1025px) {
+    .project-large {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .project-tall {
+      grid-row: span 2;
+    }
+    .project-tall .project-item__image {
+      padding-bottom: calc(150% + 24px);
+    }
+  }
+
   .project-item {
     position: relative;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(13, 27, 62, 0.12);
   }
 
   .project-item__image {
@@ -430,71 +434,7 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
   }
 
   .project-item:hover .project-item__image img {
-    transform: scale(1.05);
-  }
-
-  .project-item__overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(13, 27, 62, 0.9) 0%, rgba(13, 27, 62, 0.4) 50%, transparent 100%);
-    display: flex;
-    align-items: flex-end;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .project-item:hover .project-item__overlay {
-    opacity: 1;
-  }
-
-  .overlay-content {
-    padding: 24px;
-    transform: translateY(20px);
-    transition: transform 0.4s ease;
-  }
-
-  .project-item:hover .overlay-content {
-    transform: translateY(0);
-  }
-
-  .project-category {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--navy);
-    font-size: 0.65rem;
-    font-weight: 700;
-    padding: 4px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.05em;
-    margin-bottom: 12px;
-  }
-
-  .project-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: #ffffff;
-    margin-bottom: 8px;
-  }
-
-  .project-location {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 16px;
-  }
-
-  .project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--gold);
-    font-size: 0.8rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: gap 0.3s ease;
-  }
-
-  .project-link:hover {
-    gap: 12px;
+    transform: scale(1.06);
   }
 
   /* Feature Story */
