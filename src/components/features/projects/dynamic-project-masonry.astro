@@ -4,9 +4,29 @@ import path from 'node:path';
 
 // ProjectShowcase.astro - Dynamic Infinite Auto-Scrolling Gallery
 const localitiesDir = path.resolve('public/images/localities');
-const allImages = fs.readdirSync(localitiesDir)
+let localitiesFiles = [];
+try {
+  localitiesFiles = fs.readdirSync(localitiesDir);
+} catch (err) {
+  console.error("Error reading localities directory:", err);
+}
+const localitiesImages = localitiesFiles
   .filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file))
   .map(file => `/images/localities/${file}`);
+
+// Read all images dynamically from public/images/ongoing projects
+const ongoingDir = path.resolve('public/images/ongoing projects');
+let ongoingFiles = [];
+try {
+  ongoingFiles = fs.readdirSync(ongoingDir);
+} catch (err) {
+  console.error("Error reading ongoing projects directory:", err);
+}
+const ongoingImages = ongoingFiles
+  .filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file))
+  .map(file => `/images/ongoing projects/${file}`);
+
+const allImages = [...localitiesImages, ...ongoingImages];
 
 // Split images into two rows for dynamic effect
 const half = Math.ceil(allImages.length / 2);

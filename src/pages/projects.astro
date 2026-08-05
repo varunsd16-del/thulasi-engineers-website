@@ -5,8 +5,37 @@ import BaseLayout from '../layouts/engineering-authority-layout.astro';
 
 // Read all images dynamically from public/images/localities
 const localitiesDir = path.resolve('public/images/localities');
-const filenames = fs.readdirSync(localitiesDir);
-const allImages = filenames.filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file));
+let localitiesFiles = [];
+try {
+  localitiesFiles = fs.readdirSync(localitiesDir);
+} catch (err) {
+  console.error("Error reading localities directory:", err);
+}
+
+// Read all images dynamically from public/images/ongoing projects
+const ongoingDir = path.resolve('public/images/ongoing projects');
+let ongoingFiles = [];
+try {
+  ongoingFiles = fs.readdirSync(ongoingDir);
+} catch (err) {
+  console.error("Error reading ongoing projects directory:", err);
+}
+
+const localitiesImages = localitiesFiles
+  .filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file))
+  .map(filename => ({
+    filename,
+    src: `/images/localities/${filename}`
+  }));
+
+const ongoingImages = ongoingFiles
+  .filter(file => /\.(webp|png|jpe?g|svg)$/i.test(file))
+  .map(filename => ({
+    filename,
+    src: `/images/ongoing projects/${filename}`
+  }));
+
+const allImages = [...localitiesImages, ...ongoingImages];
 
 function getCategory(filename) {
   const lower = filename.toLowerCase();
@@ -27,19 +56,35 @@ function getCategory(filename) {
 
 function getTitle(filename) {
   let name = filename.replace(/\.(webp|png|jpe?g)$/i, '');
-  const suffixes = ['-trichy', '-srirangam', '-thuvakudi', '-puthur', '-cantonment', '-woraiyur', '-kk-nagar', '-thulasi-engineers'];
-  for (const suffix of suffixes) {
-    if (name.endsWith(suffix)) {
-      name = name.slice(0, -suffix.length);
-      break;
+  
+  // List of location suffixes/keywords to strip from the title
+  const locationKeys = [
+    'thillai-nagar', 'kk-nagar', 'golden-rock', 
+    'srirangam', 'woraiyur', 'cantonment', 'karumandapam',
+    'puthur', 'tiruverumbur', 'samayapuram', 'lalgudi',
+    'manapparai', 'thuvakudi', 'panjapur', 'trichy', 'thulasi-engineers'
+  ];
+
+  let lowerName = name.toLowerCase();
+  for (const key of locationKeys) {
+    if (lowerName.includes(key)) {
+      const regex = new RegExp(`-?in-?${key}|-?${key}`, 'gi');
+      name = name.replace(regex, '');
+      lowerName = name.toLowerCase();
     }
   }
+
+  // Remove trailing/leading hyphens if any
+  name = name.replace(/^-+|-+$/g, '');
+
   return name
     .split('-')
     .map(word => {
-      if (word === 'peb') return 'PEB';
-      if (word === 'aac') return 'AAC';
-      if (word === 'ppe') return 'PPE';
+      const upper = word.toUpperCase();
+      if (upper === 'PEB') return 'PEB';
+      if (upper === 'AAC') return 'AAC';
+      if (upper === 'PPE') return 'PPE';
+      if (upper === 'PMC') return 'PMC';
       return word.charAt(0).toUpperCase() + word.slice(1);
     })
     .join(' ');
@@ -47,20 +92,37 @@ function getTitle(filename) {
 
 function getLocation(filename) {
   const name = filename.replace(/\.(webp|png|jpe?g)$/i, '').toLowerCase();
-  if (name.endsWith('-trichy')) return 'Trichy, Tamil Nadu';
-  if (name.endsWith('-srirangam')) return 'Srirangam, Trichy';
-  if (name.endsWith('-thuvakudi')) return 'Thuvakudi, Trichy';
-  if (name.endsWith('-puthur')) return 'Puthur, Trichy';
-  if (name.endsWith('-cantonment')) return 'Cantonment, Trichy';
-  if (name.endsWith('-woraiyur')) return 'Woraiyur, Trichy';
-  if (name.endsWith('-kk-nagar')) return 'KK Nagar, Trichy';
+  
+  const locations = [
+    { key: 'srirangam', display: 'Srirangam, Trichy' },
+    { key: 'thillai-nagar', display: 'Thillai Nagar, Trichy' },
+    { key: 'kk-nagar', display: 'KK Nagar, Trichy' },
+    { key: 'woraiyur', display: 'Woraiyur, Trichy' },
+    { key: 'cantonment', display: 'Cantonment, Trichy' },
+    { key: 'karumandapam', display: 'Karumandapam, Trichy' },
+    { key: 'puthur', display: 'Puthur, Trichy' },
+    { key: 'tiruverumbur', display: 'Tiruverumbur, Trichy' },
+    { key: 'samayapuram', display: 'Samayapuram, Trichy' },
+    { key: 'golden-rock', display: 'Golden Rock, Trichy' },
+    { key: 'lalgudi', display: 'Lalgudi, Trichy' },
+    { key: 'manapparai', display: 'Manapparai, Trichy' },
+    { key: 'thuvakudi', display: 'Thuvakudi, Trichy' },
+    { key: 'panjapur', display: 'Panjapur, Trichy' },
+    { key: 'trichy', display: 'Trichy, Tamil Nadu' }
+  ];
+
+  for (const loc of locations) {
+    if (name.includes(loc.key)) {
+      return loc.display;
+    }
+  }
   return 'Trichy, Tamil Nadu';
 }
 
-const projects = allImages.map((filename, index) => {
-  const category = getCategory(filename);
-  const title = getTitle(filename);
-  const location = getLocation(filename);
+const projects = allImages.map((item, index) => {
+  const category = getCategory(item.filename);
+  const title = getTitle(item.filename);
+  const location = getLocation(item.filename);
   
   // Distribute layout types (large, tall, regular) for a beautiful masonry look
   let layoutClass = '';
@@ -71,7 +133,7 @@ const projects = allImages.map((filename, index) => {
   }
   
   return {
-    src: `/images/localities/${filename}`,
+    src: item.src,
     alt: title,
     title,
     category,
@@ -118,6 +180,16 @@ const projects = allImages.map((filename, index) => {
           <div class={`project-item ${project.layoutClass} reveal-up`} style={`transition-delay: ${project.delay};`} data-category={project.category}>
             <div class="project-item__image">
               <img src={project.src} alt={project.alt} loading="eager" decoding="async" />
+              <div class="project-item__overlay">
+                <div class="project-item__details">
+                  <span class="project-item__category">{project.category}</span>
+                  <h3 class="project-item__title">{project.title}</h3>
+                  <p class="project-item__location">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="location-icon"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                    {project.location}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         ))}
@@ -435,6 +507,65 @@ const projects = allImages.map((filename, index) => {
 
   .project-item:hover .project-item__image img {
     transform: scale(1.06);
+  }
+
+  .project-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(13, 27, 62, 0.9) 0%, rgba(13, 27, 62, 0.4) 50%, rgba(13, 27, 62, 0) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 30px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+  }
+
+  .project-item:hover .project-item__overlay {
+    opacity: 1;
+  }
+
+  .project-item__details {
+    transform: translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    width: 100%;
+  }
+
+  .project-item:hover .project-item__details {
+    transform: translateY(0);
+  }
+
+  .project-item__category {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .project-item__title {
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+  }
+
+  .project-item__location {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .location-icon {
+    width: 14px;
+    height: 14px;
+    stroke: var(--gold);
   }
 
   /* Feature Story */

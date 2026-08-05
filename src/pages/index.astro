@@ -11,6 +11,7 @@ import FAQ from '../components/features/seo/FAQ.astro';
 import AreasServed from '../components/features/seo/trichy-locality-showcase.astro';
 import Process from '../components/features/services/Process.astro';
 import ProjectShowcase from '../components/features/projects/dynamic-project-masonry.astro';
+import OngoingProjectsShowcase from '../components/features/projects/ongoing-projects-showcase.astro';
 import { SITE_METADATA } from '../app/config/site.ts';
 
 // SEO Metadata for Homepage
@@ -30,7 +31,7 @@ const featuredServices = [
   {
     title: "Commercial Construction Contractors",
     desc: "Leading commercial building contractors delivering modern office spaces, retail complexes, and hospitality projects. Turnkey construction solutions focused on functionality, ROI, and contemporary architecture.",
-    img: "/images/localities/commercial-construction-contractors-trichy.webp",
+    img: "/images/services/commercial-building-construction-services-trichy.webp",
     link: "/services/building-construction",
     icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>`
   },
@@ -84,6 +85,9 @@ const featuredProjects = [
 
   <!-- 4. Project Showcase Gallery -->
   <ProjectShowcase />
+
+  <!-- Ongoing Projects Section -->
+  <OngoingProjectsShowcase />
 
   <!-- 5. Construction Process -->
   <Process />
